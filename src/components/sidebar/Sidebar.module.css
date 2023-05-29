@@ -1,0 +1,11 @@
+.hidden {
+  display: none;
+}
+
+.side {
+  background-color: var(--dark2);
+  color: var(--white);
+  height: 100%;
+  flex: 1 1 40%;
+  padding: 2rem;
+}
