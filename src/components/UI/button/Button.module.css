@@ -20,3 +20,9 @@
 .button:active {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
 }
+
+@media only screen and (max-width: 1000px) {
+  .button {
+    width: 100%;
+  }
+}

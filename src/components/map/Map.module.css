@@ -2,7 +2,6 @@
   background-color: var(--brand-color);
   color: rgb(39, 39, 39);
   flex: 1 1 60%;
-  padding: 2rem;
   color: var(--white);
 }
 @media only screen and (max-width: 1000px) {

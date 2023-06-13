@@ -1,0 +1,22 @@
+.option {
+  color: var(--white);
+  display: block;
+  font-family: inherit;
+  flex-grow: 1;
+  flex-basis: 48%;
+  font-size: 0.9rem;
+  padding: 1rem;
+  /* flex-grow: 1; */
+  border: none;
+  background-color: var(--brand-color);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s all;
+
+  /* display: flex;
+  align-items: center;
+  flex-direction: column; */
+}
+.option:hover {
+  background-color: #068b92;
+}

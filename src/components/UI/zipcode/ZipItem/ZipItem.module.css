@@ -1,0 +1,14 @@
+.list-element {
+  color: var(--dark);
+  display: block;
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.list-element:hover {
+  background-color: #aaa;
+}
