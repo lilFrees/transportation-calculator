@@ -5,17 +5,26 @@ import ZipItem from "./ZipItem/ZipItem";
 const OptionsList = function (props) {
   let listArr = props.list.slice(0, 5);
 
-  const cityStateHandler = function (item) {
-    if (props.listId === 1) {
-      localStorage.setItem(`place1`, JSON.stringify(item));
-    } else if (props.listId === 2) {
-      localStorage.setItem(`place2`, JSON.stringify(item));
-      console.log(item);
+  const filteredListArr = listArr.map((item) => {
+    if (item.zip_code.toString().length < 5) {
+      return { ...item, zip_code: `0${item.zip_code}` };
+    } else {
+      return { ...item };
     }
+  });
+
+  const cityStateHandler = function (item) {
+    const updateLocalStorage = (key, value) => {
+      localStorage.setItem(key, JSON.stringify(value));
+      const event = new CustomEvent("customStorageChange", { detail: { key } });
+      window.dispatchEvent(event);
+    };
+
+    updateLocalStorage(`place${props.listId}`, item);
     props.onHide(props.listId);
   };
 
-  const optionListItems = listArr.map((li) => {
+  const optionListItems = filteredListArr.map((li) => {
     return (
       <ZipItem
         className={style["list-element"]}
@@ -26,7 +35,7 @@ const OptionsList = function (props) {
     );
   });
 
-  if (listArr.length === 0) {
+  if (filteredListArr.length === 0) {
     return;
   }
 

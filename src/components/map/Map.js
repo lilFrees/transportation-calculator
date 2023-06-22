@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import style from "./Map.module.css";
+import { useState, useEffect, useMemo } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
@@ -7,11 +6,9 @@ import axios from "axios";
 
 const coordFetchHandler = async function (zipCode) {
   try {
-    const response = await axios.get(
-      `https://api.zippopotam.us/us/0${zipCode}`
-    );
-    const { latitude } = response.data.places[0]["latitude"];
-    const { longitude } = response.data.places[0]["longitude"];
+    const response = await axios.get(`https://api.zippopotam.us/us/${zipCode}`);
+    const latitude = response.data.places[0].latitude;
+    const longitude = response.data.places[0].longitude;
     return { latitude, longitude };
   } catch (error) {
     console.error("Error fetching coordinates:", error);
@@ -41,6 +38,14 @@ const Map = function () {
     };
 
     fetchCoordsAndZipcodes();
+
+    // Add event listener for changes in localStorage
+    window.addEventListener("customStorageChange", fetchCoordsAndZipcodes);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("customStorageChange", fetchCoordsAndZipcodes);
+    };
   }, []);
 
   const customIcon = new Icon({
@@ -49,12 +54,17 @@ const Map = function () {
   });
 
   return (
-    <div className={style.map} id="map">
-      <MapContainer center={[39.5, -98.35]} zoom={5} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+    <MapContainer
+      center={[39.5, -98.35]}
+      zoom={5}
+      scrollWheelZoom={true}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {coordinates.place1 && (
         <Marker
           position={[coordinates.place1.latitude, coordinates.place1.longitude]}
           icon={customIcon}
@@ -63,8 +73,18 @@ const Map = function () {
             <h4>123</h4>
           </Popup>
         </Marker>
-      </MapContainer>
-    </div>
+      )}
+      {coordinates.place2 && (
+        <Marker
+          position={[coordinates.place2.latitude, coordinates.place2.longitude]}
+          icon={customIcon}
+        >
+          <Popup>
+            <h4>123</h4>
+          </Popup>
+        </Marker>
+      )}
+    </MapContainer>
   );
 };
 

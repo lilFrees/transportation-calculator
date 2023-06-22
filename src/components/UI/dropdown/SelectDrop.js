@@ -46,8 +46,6 @@ const SelectDrop = forwardRef((props, ref) => {
   ];
 
   const showOptionsHandler = function (event) {
-    console.log("TOGGLE CLICK");
-
     if (event.target.id === "toggle") {
       setOptionsAreShown(!optionsAreShown);
     } else {

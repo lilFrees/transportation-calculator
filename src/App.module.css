@@ -5,3 +5,21 @@
   display: flex;
   color: #000807;
 }
+
+.map {
+  background-color: var(--brand-color);
+  color: rgb(39, 39, 39);
+  color: var(--white);
+  flex-basis: 60%;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 1000px) {
+  .map {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none;
+}

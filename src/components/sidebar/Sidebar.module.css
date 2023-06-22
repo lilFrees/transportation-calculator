@@ -4,8 +4,7 @@
 
 .side {
   background-color: var(--dark2);
+  flex-basis: 40%;
   color: var(--white);
-  min-height: 100%;
-  flex: 1 1 40%;
   padding: 2rem;
 }

@@ -4,8 +4,6 @@ import SelectDrop from "../UI/dropdown/SelectDrop";
 import { useReducer, useState } from "react";
 import CityOptionsList from "../UI/zipcode/CityOptionsList";
 import Database from "../../resource/USCities.json";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const defaultZip1 =
   localStorage.getItem("place1") && JSON.parse(localStorage.getItem("place1"));
@@ -39,13 +37,15 @@ const reducer = (state, action) => {
   }
 };
 const Form = (props) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [optionsAreShown, setOptionsAreShown] = useState(false);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const showCars = props.show;
-
   const listOfZipCodes = Database;
+
+  const showOptionsHandler = () => {
+    setOptionsAreShown(!optionsAreShown);
+  };
 
   const submitHandler = function (e) {
     e.preventDefault();
@@ -57,7 +57,7 @@ const Form = (props) => {
 
   const filteredZipCodes1 = listOfZipCodes.filter((zip) => {
     if (state.zipcode1.trim().length === 0) {
-      return;
+      return null;
     }
     return zip.zip_code.toString().startsWith(state.zipcode1);
   });
@@ -68,7 +68,7 @@ const Form = (props) => {
 
   const filteredZipCodes2 = listOfZipCodes.filter((zip) => {
     if (state.zipcode2.trim().length === 0) {
-      return;
+      return null;
     }
     return zip.zip_code.toString().startsWith(state.zipcode2);
   });
@@ -146,17 +146,11 @@ const Form = (props) => {
           />
         )}
       </label>
-      <label htmlFor="date" className={style.label}>
-        When do you want to ship?
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          dateFormat="MMMM d, yyyy"
-          label="Date"
-        />
-      </label>
 
-      <SelectDrop carsAreShown={showCars} />
+      <SelectDrop
+        carsAreShown={optionsAreShown}
+        showOptions={showOptionsHandler}
+      />
 
       <Button type="submit">Submit</Button>
     </form>
