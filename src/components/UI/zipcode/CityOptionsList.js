@@ -6,11 +6,8 @@ const OptionsList = function (props) {
   let listArr = props.list.slice(0, 5);
 
   const filteredListArr = listArr.map((item) => {
-    if (item.zip_code.toString().length < 5) {
-      return { ...item, zip_code: `0${item.zip_code}` };
-    } else {
-      return { ...item };
-    }
+    const filteredZipCode = String(item.zip_code).padStart(5, "0");
+    return { ...item, zip_code: filteredZipCode };
   });
 
   const cityStateHandler = function (item) {

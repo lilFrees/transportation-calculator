@@ -1,9 +1,11 @@
 import style from "./Form.module.css";
 import Button from "../UI/button/Button";
 import SelectDrop from "../UI/dropdown/SelectDrop";
-import { useReducer, useState } from "react";
+import { useReducer, useRef, useState, useContext } from "react";
 import CityOptionsList from "../UI/zipcode/CityOptionsList";
 import Database from "../../resource/USCities.json";
+import emailjs from "emailjs-com";
+import EmailVerification from "../verification/EmailVerification";
 
 const defaultZip1 =
   localStorage.getItem("place1") && JSON.parse(localStorage.getItem("place1"));
@@ -36,7 +38,10 @@ const reducer = (state, action) => {
       return state;
   }
 };
-const Form = (props) => {
+
+const Form = () => {
+  const formRef = useRef();
+
   const [optionsAreShown, setOptionsAreShown] = useState(false);
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -47,8 +52,26 @@ const Form = (props) => {
     setOptionsAreShown(!optionsAreShown);
   };
 
+  const ctx = useContext(EmailVerification);
+
   const submitHandler = function (e) {
     e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_g585fim",
+        "template_z5g33wd",
+        formRef.current,
+        "ZdzxI_uPunkq3uOQ7"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   const zipCodeChangeHandler1 = function (event) {
@@ -107,11 +130,12 @@ const Form = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler} className={style.form}>
+    <form onSubmit={submitHandler} className={style.form} ref={formRef}>
       <label htmlFor="zip1" className={style.label}>
         From (Zip Code)
         <input
           type="text"
+          name="from_geo"
           id="zip1"
           className={style.input}
           onFocus={focus1Handler}
@@ -132,6 +156,7 @@ const Form = (props) => {
         <input
           type="text"
           id="zip2"
+          name="to_geo"
           className={style.input}
           onFocus={focus2Handler}
           onChange={zipCodeChangeHandler2}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
@@ -70,7 +70,7 @@ const Map = function () {
           icon={customIcon}
         >
           <Popup>
-            <h4>123</h4>
+            <h4>Marker 1</h4>
           </Popup>
         </Marker>
       )}
@@ -80,7 +80,7 @@ const Map = function () {
           icon={customIcon}
         >
           <Popup>
-            <h4>123</h4>
+            <h4>Marker 2</h4>
           </Popup>
         </Marker>
       )}
