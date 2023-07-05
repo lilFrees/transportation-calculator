@@ -91,10 +91,10 @@ const Form = () => {
 
     emailjs
       .sendForm(
-        "service_g585fim",
-        "template_z5g33wd",
+        "service_isz7fji",
+        "template_ei768ps",
         formRef.current,
-        "ZdzxI_uPunkq3uOQ7"
+        "MtPs8eVT0a2ozx5EU"
       )
       .then(
         (result) => {
