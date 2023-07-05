@@ -19,6 +19,10 @@ const Sidebar = function () {
         show={showCars}
         onShow={showCarHandler}
       />
+      {/* <div className={style.success}>
+        <span className={style.message}>Form sent successfully</span>
+        <div className={style.timer}></div>
+      </div> */}
     </div>
   );
 };

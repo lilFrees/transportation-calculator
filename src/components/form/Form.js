@@ -5,7 +5,9 @@ import { useReducer, useRef, useState, useContext } from "react";
 import CityOptionsList from "../UI/zipcode/CityOptionsList";
 import Database from "../../resource/USCities.json";
 import emailjs from "emailjs-com";
-import EmailVerification from "../verification/EmailVerification";
+import { VerificationContext } from "../verification/VerificationContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const defaultZip1 =
   localStorage.getItem("place1") && JSON.parse(localStorage.getItem("place1"));
@@ -41,10 +43,12 @@ const reducer = (state, action) => {
 
 const Form = () => {
   const formRef = useRef();
+  const ctx = useContext(VerificationContext);
 
   const [optionsAreShown, setOptionsAreShown] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [chosenCar, setChosenCar] = useState("");
 
   const listOfZipCodes = Database;
 
@@ -52,10 +56,38 @@ const Form = () => {
     setOptionsAreShown(!optionsAreShown);
   };
 
-  const ctx = useContext(EmailVerification);
+  const notifySuccess = function () {
+    toast.success("Form sent successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const notifyFail = function () {
+    toast.error("Error", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   const submitHandler = function (e) {
     e.preventDefault();
+
+    setLoading(true);
+
+    console.log(formRef.current);
 
     emailjs
       .sendForm(
@@ -67,9 +99,13 @@ const Form = () => {
       .then(
         (result) => {
           console.log(result.text);
+          notifySuccess();
+          setLoading(false);
+          ctx.onVerification();
         },
         (error) => {
           console.log(error.text);
+          notifyFail();
         }
       );
   };
@@ -172,12 +208,44 @@ const Form = () => {
         )}
       </label>
 
+      <label htmlFor="car">
+        <input
+          type="text"
+          id="car"
+          style={{
+            width: 0,
+            height: 0,
+            backgroundColor: "transparent",
+            border: "none",
+            position: "absolute",
+          }}
+          value={chosenCar}
+          name="vehicle_type"
+          readOnly
+        />
+      </label>
+
       <SelectDrop
         carsAreShown={optionsAreShown}
         showOptions={showOptionsHandler}
+        onChange={(e) => {
+          setChosenCar(e);
+        }}
       />
 
-      <Button type="submit">Submit</Button>
+      <Button type="submit">{loading ? "Loading..." : "Submit"}</Button>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </form>
   );
 };

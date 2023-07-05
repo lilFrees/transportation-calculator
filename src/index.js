@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import EmailVerification from "./components/verification/EmailVerification";
+import EmailVerificationProvider from "./components/verification/VerificationContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <EmailVerification>
+    <EmailVerificationProvider>
       <App />
-    </EmailVerification>
+    </EmailVerificationProvider>
   </React.StrictMode>
 );
 

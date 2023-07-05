@@ -56,12 +56,13 @@ const SelectDrop = forwardRef((props, ref) => {
   const chooseHandler = function (car) {
     setChosenCar(car.name);
     setOptionsAreShown(false);
+    props.onChange(car.name);
   };
 
   return (
     <div className={style.dropdown} onClick={showOptionsHandler} ref={ref}>
       <div className={style.select} id="toggle">
-        <button className={style.default} id="toggle">
+        <button className={style.default} id="toggle" type="button">
           {chosenCar}
         </button>
       </div>
