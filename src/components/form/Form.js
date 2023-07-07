@@ -2,12 +2,13 @@ import style from "./Form.module.css";
 import Button from "../UI/button/Button";
 import SelectDrop from "../UI/dropdown/SelectDrop";
 import { useReducer, useRef, useState, useContext } from "react";
-import CityOptionsList from "../UI/zipcode/CityOptionsList";
 import Database from "../../resource/USCities.json";
 import emailjs from "emailjs-com";
 import { VerificationContext } from "../verification/VerificationContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ZipInput from "../ZipInput/ZipInput";
+import FormStorage from "../FormStorage/FormStorage";
 
 const defaultZip1 =
   localStorage.getItem("place1") && JSON.parse(localStorage.getItem("place1"));
@@ -24,6 +25,9 @@ const initialState = {
     : "",
   input1Focused: false,
   input2Focused: false,
+  fullName: "",
+  phoneNumber: 0,
+  email: "",
 };
 
 const reducer = (state, action) => {
@@ -36,6 +40,12 @@ const reducer = (state, action) => {
       return { ...state, input1Focused: !state.input1Focused };
     case "TOGGLE_INPUT2FOCUSED":
       return { ...state, input2Focused: !state.input2Focused };
+    case "SET_FIRST_NAME":
+      return { ...state, fullName: action.payload };
+    case "SET_PHONE_NUMBER":
+      return { ...state, phoneNumber: action.payload };
+    case "SET_EMAIL":
+      return { ...state, email: action.payload };
     default:
       return state;
   }
@@ -49,6 +59,11 @@ const Form = () => {
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [chosenCar, setChosenCar] = useState("");
+  const [step, setStep] = useState(0);
+
+  const stepHandler = function () {
+    step === 0 ? setStep(1) : setStep(0);
+  };
 
   const listOfZipCodes = Database;
 
@@ -140,6 +155,18 @@ const Form = () => {
     dispatch({ type: "TOGGLE_INPUT2FOCUSED" });
   };
 
+  const changeNameHandler = function (event) {
+    dispatch({ type: "SET_FIRST_NAME", payload: event.target.value });
+  };
+
+  const changePhoneHandler = function (event) {
+    dispatch({ type: "SET_PHONE_NUMBER", payload: event.target.value });
+  };
+
+  const changeMailHandler = function (event) {
+    dispatch({ type: "SET_EMAIL", payload: event.target.value });
+  };
+
   const chooseLocationHandler = function (key) {
     if (key === 1) {
       const chosenCity1 = localStorage.getItem("place1")
@@ -166,74 +193,121 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={submitHandler} className={style.form} ref={formRef}>
-      <label htmlFor="zip1" className={style.label}>
-        From (Zip Code)
-        <input
-          type="text"
-          name="from_geo"
-          id="zip1"
-          className={style.input}
-          onFocus={focus1Handler}
-          onChange={zipCodeChangeHandler1}
-          value={state.zipcode1}
-          autoComplete="off"
-        />
-        {state.input1Focused && (
-          <CityOptionsList
-            list={filteredZipCodes1}
+    <form onSubmit={submitHandler} className={style.form}>
+      {step === 0 && (
+        <>
+          <ZipInput
+            label="From (Zip Code)"
+            id="zip1"
+            name="from_geo"
+            value={state.zipcode1}
+            onFocus={focus1Handler}
+            onChange={zipCodeChangeHandler1}
+            isFocused={state.input1Focused}
+            filteredZipCodes={filteredZipCodes1}
             onHide={chooseLocationHandler}
             listId={1}
           />
-        )}
-      </label>
-      <label htmlFor="zip2" className={style.label}>
-        To (Zip Code)
-        <input
-          type="text"
-          id="zip2"
-          name="to_geo"
-          className={style.input}
-          onFocus={focus2Handler}
-          onChange={zipCodeChangeHandler2}
-          value={state.zipcode2}
-          autoComplete="off"
-        />
-        {state.input2Focused && (
-          <CityOptionsList
-            list={filteredZipCodes2}
+
+          <ZipInput
+            label="To (Zip Code)"
+            id="zip2"
+            name="to_geo"
+            value={state.zipcode2}
+            onFocus={focus2Handler}
+            onChange={zipCodeChangeHandler2}
+            isFocused={state.input2Focused}
+            filteredZipCodes={filteredZipCodes2}
             onHide={chooseLocationHandler}
             listId={2}
           />
-        )}
-      </label>
 
-      <label htmlFor="car">
-        <input
-          type="text"
-          id="car"
-          style={{
-            width: 0,
-            height: 0,
-            backgroundColor: "transparent",
-            border: "none",
-            position: "absolute",
-          }}
-          value={chosenCar}
-          name="vehicle_type"
-          readOnly
-        />
-      </label>
+          <input
+            type="text"
+            id="car"
+            className={style.hidden}
+            value={chosenCar}
+            name="vehicle_type"
+            readOnly
+          />
 
-      <SelectDrop
-        carsAreShown={optionsAreShown}
-        showOptions={showOptionsHandler}
-        onChange={(e) => {
-          setChosenCar(e);
-        }}
+          <SelectDrop
+            carsAreShown={optionsAreShown}
+            showOptions={showOptionsHandler}
+            onChange={(e) => {
+              setChosenCar(e);
+            }}
+          />
+        </>
+      )}
+      {step === 1 && (
+        <>
+          <button
+            type="button"
+            onClick={() => {
+              setStep(0);
+            }}
+            className={style.back}
+          >
+            Back
+          </button>
+          <label htmlFor="first_name" className={style.label}>
+            Full Name
+            <input
+              type="text"
+              id="first_name"
+              className={style.input}
+              required
+              autoComplete="off"
+              onChange={changeNameHandler}
+              value={state.fullName}
+              name="full_name"
+            />
+          </label>
+          <label htmlFor="phone_number" className={style.label}>
+            Phone Number
+            <input
+              type="text"
+              id="phone_number"
+              className={style.input}
+              required
+              autoComplete="off"
+              onChange={changePhoneHandler}
+              value={state.phoneNumber}
+              name="phone_number"
+            />
+          </label>
+          <label htmlFor="email" className={style.label}>
+            Email
+            <input
+              type="email"
+              id="email"
+              className={style.input}
+              required
+              autoComplete="off"
+              onChange={changeMailHandler}
+              value={state.email}
+              name="email"
+            />
+          </label>
+        </>
+      )}
+      <FormStorage
+        inputs={[
+          { name: "from_geo", value: state.zipcode1 },
+          { name: "to_geo", value: state.zipcode2 },
+          { name: "vehicle_type", value: chosenCar },
+          { name: "full_name", value: state.fullName },
+          { name: "phone_number", value: state.phoneNumber },
+          { name: "email", value: state.email },
+        ]}
+        ref={formRef}
       />
 
-      <Button type="submit">{loading ? "Loading..." : "Submit"}</Button>
+      <Button type={step === 0 ? "submit" : "button"} onClick={stepHandler}>
+        {loading && "Loading..."}
+        {!loading && (step === 0 ? "Next Step" : "Submit")}
+      </Button>
       <ToastContainer
         position="top-right"
         autoClose={5000}

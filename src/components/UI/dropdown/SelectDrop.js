@@ -9,39 +9,54 @@ const SelectDrop = forwardRef((props, ref) => {
 
   const options = [
     {
-      name: "Small Car",
-      icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAB9JREFUOE9jZKAQMFKon2HUAIbRMGAYDQNQPhr4vAAAJpgAEX/anFwAAAAASUVORK5CYII=",
+      name: "Car",
+      icon: "",
       id: 0,
     },
     {
-      name: "Midsize Car",
+      name: "Pickup",
       icon: "",
       id: 1,
     },
     {
-      name: "Large Car",
+      name: "Van",
       icon: "",
       id: 2,
     },
     {
-      name: "Sports Car",
+      name: "Truck",
       icon: "",
       id: 3,
     },
     {
-      name: "Small SUV",
+      name: "Trailer",
       icon: "",
       id: 4,
     },
     {
-      name: "Midsize SUV",
+      name: "AVT",
       icon: "",
       id: 5,
     },
     {
-      name: "Large SUV",
+      name: "Motorcycle",
       icon: "",
       id: 6,
+    },
+    {
+      name: "Recreational Vehicle",
+      icon: "",
+      id: 7,
+    },
+    {
+      name: "Golf Cart",
+      icon: "",
+      id: 8,
+    },
+    {
+      name: "MiniCar",
+      icon: "",
+      id: 9,
     },
   ];
 

@@ -5,6 +5,7 @@
   /* border: 1px dashed #444; */
   max-width: 40rem;
   margin: 5rem auto;
+  position: relative;
 }
 
 /* @media only screen and (max-width: 1000px) {
@@ -41,4 +42,27 @@ select.input {
 .input:focus {
   outline: 2px solid var(--brand-color);
   box-shadow: none;
+}
+
+.back {
+  display: inline-block;
+  width: max-content;
+  background-color: transparent;
+  border: none;
+  color: var(--white);
+  position: absolute;
+  top: -2rem;
+  left: 5px;
+  cursor: pointer;
+}
+.back:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: none;
+  position: absolute;
 }
