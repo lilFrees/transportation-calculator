@@ -1,9 +1,10 @@
 import style from "./OptionsList.module.css";
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import ZipItem from "./ZipItem/ZipItem";
 
-const OptionsList = function (props) {
-  let listArr = props.list.slice(0, 5);
+const OptionsList = forwardRef(function (props, ref) {
+  let listArr = props.list.slice(0, 20);
 
   const filteredListArr = listArr.map((item) => {
     const filteredZipCode = String(item.zip_code).padStart(5, "0");
@@ -43,10 +44,11 @@ const OptionsList = function (props) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
+      ref={ref}
     >
       {optionListItems}
     </motion.div>
   );
-};
+});
 
 export default OptionsList;

@@ -26,7 +26,7 @@ const initialState = {
   input1Focused: false,
   input2Focused: false,
   fullName: "",
-  phoneNumber: 0,
+  phoneNumber: undefined,
   email: "",
 };
 
@@ -55,7 +55,6 @@ const Form = () => {
   const formRef = useRef();
   const ctx = useContext(VerificationContext);
 
-  const [optionsAreShown, setOptionsAreShown] = useState(false);
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [chosenCar, setChosenCar] = useState("");
@@ -66,10 +65,6 @@ const Form = () => {
   };
 
   const listOfZipCodes = Database;
-
-  const showOptionsHandler = () => {
-    setOptionsAreShown(!optionsAreShown);
-  };
 
   const notifySuccess = function () {
     toast.success("Form sent successfully", {
@@ -197,11 +192,12 @@ const Form = () => {
       {step === 0 && (
         <>
           <ZipInput
-            label="From (Zip Code)"
+            label="From (Zip Code):"
             id="zip1"
             name="from_geo"
             value={state.zipcode1}
             onFocus={focus1Handler}
+            onBlur={focus1Handler}
             onChange={zipCodeChangeHandler1}
             isFocused={state.input1Focused}
             filteredZipCodes={filteredZipCodes1}
@@ -210,14 +206,16 @@ const Form = () => {
           />
 
           <ZipInput
-            label="To (Zip Code)"
+            label="To (Zip Code):"
             id="zip2"
             name="to_geo"
             value={state.zipcode2}
             onFocus={focus2Handler}
+            onBlur={focus2Handler}
             onChange={zipCodeChangeHandler2}
             isFocused={state.input2Focused}
             filteredZipCodes={filteredZipCodes2}
+            c
             onHide={chooseLocationHandler}
             listId={2}
           />
@@ -230,10 +228,9 @@ const Form = () => {
             name="vehicle_type"
             readOnly
           />
+          <label className={style.label}>Type of vehicle:</label>
 
           <SelectDrop
-            carsAreShown={optionsAreShown}
-            showOptions={showOptionsHandler}
             onChange={(e) => {
               setChosenCar(e);
             }}

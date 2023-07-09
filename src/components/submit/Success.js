@@ -7,7 +7,6 @@ const Success = function () {
   const ctx = useContext(VerificationContext);
   const clickHandler = function () {
     ctx.onGoBack();
-    console.log(ctx.onGoBack);
   };
   return (
     <div className={style.success}>

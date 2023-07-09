@@ -5,11 +5,10 @@
   padding: 8px 10px;
   font-size: 14px;
   color: var(--dark);
-  background-color: transparent;
+  background-color: var(--white);
   border: none;
   outline: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .option:hover {

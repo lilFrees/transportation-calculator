@@ -1,0 +1,20 @@
+.frame {
+  max-width: 50rem;
+  max-height: 30rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .frame {
+    max-height: max-content;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .frame {
+    max-width: 100%;
+    margin-inline: 2vw;
+  }
+}
+
+.overflow {
+  overflow: hidden;
+}
