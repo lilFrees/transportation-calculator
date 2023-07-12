@@ -1,22 +1,39 @@
 import style from "./ZipItem.module.css";
+import { useState, useEffect } from "react";
 
 const ZipItem = function (props) {
-  const zipCode = props.item.zip_code;
+  const [optionValue, setOptionValue] = useState("123");
+
+  const zipCode = props.item?.zip_code ?? "";
   const city = props.item.city;
   const state = props.item.state;
 
+  useEffect(() => {
+    zipCode
+      ? setOptionValue(`${zipCode}, ${city}, ${state}`)
+      : setOptionValue(`${city}, ${state}`);
+  }, [zipCode, city, state]);
+
   const zipCodeSetHandler = function () {
-    const locationObj = {
-      zip: zipCode,
-      city: city,
-      state: state,
-    };
-    props.onClick(locationObj);
+    if (zipCode?.trim().length !== 0) {
+      const locationObj = {
+        zip: zipCode,
+        city: city,
+        state: state,
+      };
+      props.onClick(locationObj);
+    } else {
+      const locationObj = {
+        city: city,
+        state: state,
+      };
+      props.onClick(locationObj);
+    }
   };
 
   return (
     <button className={style["list-element"]} onClick={zipCodeSetHandler}>
-      {props.item.zip_code}, {props.item.city}, {props.item.state}
+      {optionValue}
     </button>
   );
 };

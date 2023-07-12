@@ -1,9 +1,6 @@
 .app {
   width: 100%;
   background-color: var(--dark2);
-  display: flex;
-  gap: 2rem;
-  color: #000807;
 }
 
 .hidden {

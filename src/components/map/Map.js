@@ -16,6 +16,10 @@ const coordFetchHandler = async function (zipCode) {
   }
 };
 
+const coordFetchCityHandler = async function (city, state) {
+  console.log(city, state);
+};
+
 const Map = function () {
   const [coordinates, setCoordinates] = useState({
     place1: null,
@@ -28,7 +32,9 @@ const Map = function () {
       const place2Zip = JSON.parse(localStorage.getItem("place2"));
 
       if (place1Zip) {
-        const coords = await coordFetchHandler(place1Zip.zip);
+        const coords = place1Zip.zip
+          ? await coordFetchHandler(place1Zip.zip)
+          : await coordFetchCityHandler(place1Zip.city, place1Zip.state);
         setCoordinates((prev) => ({ ...prev, place1: coords }));
       }
       if (place2Zip) {

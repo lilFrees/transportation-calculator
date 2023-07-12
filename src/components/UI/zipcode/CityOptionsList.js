@@ -7,8 +7,12 @@ const OptionsList = forwardRef(function (props, ref) {
   let listArr = props.list.slice(0, 20);
 
   const filteredListArr = listArr.map((item) => {
-    const filteredZipCode = String(item.zip_code).padStart(5, "0");
-    return { ...item, zip_code: filteredZipCode };
+    const filteredZipCode = String(item.zip_code)?.padStart(5, "0");
+    if (filteredZipCode === "undefined") {
+      return item;
+    } else {
+      return { ...item, zip_code: filteredZipCode };
+    }
   });
 
   const cityStateHandler = function (item) {
@@ -28,7 +32,7 @@ const OptionsList = forwardRef(function (props, ref) {
         className={style["list-element"]}
         onClick={cityStateHandler}
         item={li}
-        key={li.zip_code}
+        key={Math.random()}
       />
     );
   });

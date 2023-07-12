@@ -3,12 +3,12 @@
 }
 
 .side {
-  flex-basis: 50%;
+  flex-basis: 40%;
   color: var(--white);
   padding: 2rem 2rem 2rem 0;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 992px) {
   .side {
     flex-basis: 100%;
     padding: 0;

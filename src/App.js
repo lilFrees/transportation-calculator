@@ -2,17 +2,19 @@ import React, { useContext } from "react";
 import style from "./App.module.css";
 import { VerificationContext } from "./components/verification/VerificationContext";
 import Success from "./components/submit/Success";
-import Calculator from "./components/Calculator/Calculator";
+import NavBar from "./components/Layout/NavBar/NavBar";
+import Hero from "./components/Layout/Hero/Hero";
+import About from "./components/Layout/About/About";
 
 function App() {
-  const ctx = useContext(VerificationContext);
-
-  console.log(ctx);
+  const { isVerified } = useContext(VerificationContext);
 
   return (
     <div className={style.app}>
-      {ctx.isVerified && <Success />}
-      <Calculator />
+      {isVerified && <Success />}
+      <NavBar />
+      <Hero />
+      <About />
     </div>
   );
 }

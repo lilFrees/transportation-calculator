@@ -3,6 +3,7 @@ import Button from "../UI/button/Button";
 import SelectDrop from "../UI/dropdown/SelectDrop";
 import { useReducer, useRef, useState, useContext } from "react";
 import Database from "../../resource/USCities.json";
+import CapitalsOfStates from "../../resource/States.json";
 import emailjs from "emailjs-com";
 import { VerificationContext } from "../verification/VerificationContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,12 +18,17 @@ const defaultZip2 =
   localStorage.getItem("place2") && JSON.parse(localStorage.getItem("place2"));
 
 const initialState = {
-  zipcode1: defaultZip1
+  zipcode1: !defaultZip1
+    ? ""
+    : defaultZip1.zip
     ? `${defaultZip1.zip}, ${defaultZip1.city}, ${defaultZip1.state}`
-    : "",
-  zipcode2: defaultZip2
+    : `${defaultZip1.city}, ${defaultZip1.state}`,
+
+  zipcode2: !defaultZip2
+    ? ""
+    : defaultZip2.zip
     ? `${defaultZip2.zip}, ${defaultZip2.city}, ${defaultZip2.state}`
-    : "",
+    : `${defaultZip2.city}, ${defaultZip2.state}`,
   input1Focused: false,
   input2Focused: false,
   fullName: "",
@@ -63,8 +69,6 @@ const Form = () => {
   const stepHandler = function () {
     step === 0 ? setStep(1) : setStep(0);
   };
-
-  const listOfZipCodes = Database;
 
   const notifySuccess = function () {
     toast.success("Form sent successfully", {
@@ -120,27 +124,38 @@ const Form = () => {
       );
   };
 
+  const listOfZipCodes = Database;
+  const listOfStates = CapitalsOfStates;
+
   const zipCodeChangeHandler1 = function (event) {
     dispatch({ type: "SET_ZIPCODE1", payload: event.target.value });
   };
 
-  const filteredZipCodes1 = listOfZipCodes.filter((zip) => {
-    if (state.zipcode1.trim().length === 0) {
-      return null;
-    }
-    return zip.zip_code.toString().startsWith(state.zipcode1);
-  });
+  let filteredZipCodes1 =
+    state.zipcode1.trim().length === 0
+      ? []
+      : isNaN(state.zipcode1)
+      ? listOfStates.filter((city) =>
+          city.city.toLowerCase().startsWith(state.zipcode1.toLowerCase())
+        )
+      : listOfZipCodes.filter((zip) =>
+          zip.zip_code.toString().startsWith(state.zipcode1)
+        );
 
   const zipCodeChangeHandler2 = function (event) {
     dispatch({ type: "SET_ZIPCODE2", payload: event.target.value });
   };
 
-  const filteredZipCodes2 = listOfZipCodes.filter((zip) => {
-    if (state.zipcode2.trim().length === 0) {
-      return null;
-    }
-    return zip.zip_code.toString().startsWith(state.zipcode2);
-  });
+  let filteredZipCodes2 =
+    state.zipcode2.trim().length === 0
+      ? []
+      : isNaN(state.zipcode2)
+      ? listOfStates.filter((city) =>
+          city.city.toLowerCase().startsWith(state.zipcode2.toLowerCase())
+        )
+      : listOfZipCodes.filter((zip) =>
+          zip.zip_code.toString().startsWith(state.zipcode2)
+        );
 
   const focus1Handler = function () {
     dispatch({ type: "TOGGLE_INPUT1FOCUSED" });
@@ -169,21 +184,33 @@ const Form = () => {
         : "";
       dispatch({ type: "TOGGLE_INPUT1FOCUSED" });
 
-      chosenCity1 &&
+      if (chosenCity1 && chosenCity1.zip) {
         dispatch({
           type: "SET_ZIPCODE1",
           payload: `${chosenCity1.zip}, ${chosenCity1.city}, ${chosenCity1.state}`,
         });
+      } else {
+        dispatch({
+          type: "SET_ZIPCODE1",
+          payload: `${chosenCity1.city}, ${chosenCity1.state}`,
+        });
+      }
     } else if (key === 2) {
       const chosenCity2 = localStorage.getItem("place2")
         ? JSON.parse(localStorage.getItem("place2"))
         : "";
       dispatch({ type: "TOGGLE_INPUT2FOCUSED" });
-      chosenCity2 &&
+      if (chosenCity2 && chosenCity2.zip) {
         dispatch({
           type: "SET_ZIPCODE2",
           payload: `${chosenCity2.zip}, ${chosenCity2.city}, ${chosenCity2.state}`,
         });
+      } else {
+        dispatch({
+          type: "SET_ZIPCODE2",
+          payload: `${chosenCity2.city}, ${chosenCity2.state}`,
+        });
+      }
     }
   };
 
