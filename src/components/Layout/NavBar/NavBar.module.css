@@ -1,0 +1,39 @@
+.nav {
+  background-color: rgb(247, 251, 255);
+  padding: 0.5rem 0;
+  height: 5rem;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: repeat(2, max-content) 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.links {
+  display: flex;
+  gap: 3rem;
+}
+
+.link {
+  color: var(--dark2);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.call {
+  background-color: green;
+  color: var(--white);
+  padding: 0.8rem 2rem;
+  border-radius: 1000px;
+  justify-self: end;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.call:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-0.2rem);
+}

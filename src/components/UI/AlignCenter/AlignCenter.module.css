@@ -2,11 +2,19 @@
   .align-center {
     max-width: 576px;
   }
+  .fluid.align-center {
+    max-width: 100% !important;
+    margin: 0;
+  }
 }
 
 @media only screen and (min-width: 992px) {
   .align-center {
     max-width: 960px;
+  }
+  .fluid.align-center {
+    max-width: 100% !important;
+    margin: 0;
   }
 }
 
@@ -14,6 +22,10 @@
   .align-center {
     max-width: 1140px;
   }
+  /* .fluid.align-center {
+    max-width: 100% !important;
+    margin: 0;
+  } */
 }
 
 .align-center {

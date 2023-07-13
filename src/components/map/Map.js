@@ -3,8 +3,9 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import axios from "axios";
+import style from "./Map.module.css";
 
-const coordFetchHandler = async function (zipCode) {
+const coordFetchZipHandler = async function (zipCode) {
   try {
     const response = await axios.get(`https://api.zippopotam.us/us/${zipCode}`);
     const latitude = response.data.places[0].latitude;
@@ -33,12 +34,12 @@ const Map = function () {
 
       if (place1Zip) {
         const coords = place1Zip.zip
-          ? await coordFetchHandler(place1Zip.zip)
+          ? await coordFetchZipHandler(place1Zip.zip)
           : await coordFetchCityHandler(place1Zip.city, place1Zip.state);
         setCoordinates((prev) => ({ ...prev, place1: coords }));
       }
       if (place2Zip) {
-        const coords = await coordFetchHandler(place2Zip.zip);
+        const coords = await coordFetchZipHandler(place2Zip.zip);
         setCoordinates((prev) => ({ ...prev, place2: coords }));
       }
     };
@@ -60,37 +61,45 @@ const Map = function () {
   });
 
   return (
-    <MapContainer
-      center={[39.5, -98.35]}
-      zoom={4}
-      scrollWheelZoom={true}
-      style={{ width: "100%", height: "100%" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {coordinates.place1 && (
-        <Marker
-          position={[coordinates.place1.latitude, coordinates.place1.longitude]}
-          icon={customIcon}
-        >
-          <Popup>
-            <h4>Marker 1</h4>
-          </Popup>
-        </Marker>
-      )}
-      {coordinates.place2 && (
-        <Marker
-          position={[coordinates.place2.latitude, coordinates.place2.longitude]}
-          icon={customIcon}
-        >
-          <Popup>
-            <h4>Marker 2</h4>
-          </Popup>
-        </Marker>
-      )}
-    </MapContainer>
+    <div className={style.map}>
+      <MapContainer
+        center={[39.5, -98.35]}
+        zoom={4}
+        scrollWheelZoom={true}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {coordinates.place1 && (
+          <Marker
+            position={[
+              coordinates.place1.latitude,
+              coordinates.place1.longitude,
+            ]}
+            icon={customIcon}
+          >
+            <Popup>
+              <h4>Marker 1</h4>
+            </Popup>
+          </Marker>
+        )}
+        {coordinates.place2 && (
+          <Marker
+            position={[
+              coordinates.place2.latitude,
+              coordinates.place2.longitude,
+            ]}
+            icon={customIcon}
+          >
+            <Popup>
+              <h4>Marker 2</h4>
+            </Popup>
+          </Marker>
+        )}
+      </MapContainer>
+    </div>
   );
 };
 

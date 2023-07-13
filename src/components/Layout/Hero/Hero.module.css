@@ -1,5 +1,51 @@
-.app {
-  display: flex;
+.hero {
   gap: 2rem;
   color: #000807;
+  height: 100%;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0;
+  gap: 2rem;
+  height: max-content;
+}
+
+.calculator {
+  flex-basis: 40%;
+  display: block;
+  height: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    margin: 0 !important;
+  }
+
+  .calculator {
+    flex-basis: 100%;
+  }
+}
+
+.map {
+  color: rgb(39, 39, 39);
+  flex-basis: 60%;
+  display: block;
+  height: 25rem;
+  width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .map {
+    display: none;
+  }
+}
+
+/* @media only screen and (max-width: 1200px) {
+  .map {
+    height: 20rem;
+    width: 100%;
+  }
+} */

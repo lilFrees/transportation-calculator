@@ -7,7 +7,7 @@
 
 .input {
   padding: 0.7rem;
-  border: 1px solid var(--dark);
+  border: none;
   border-radius: 8px;
   margin-top: 0.7rem;
   font-size: 1rem;
