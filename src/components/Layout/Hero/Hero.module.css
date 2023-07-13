@@ -8,14 +8,16 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   gap: 2rem;
   height: max-content;
 }
 
 .calculator {
   flex-basis: 40%;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   height: 100%;
 }
 
@@ -49,3 +51,19 @@
     width: 100%;
   }
 } */
+
+.heading {
+  color: var(--white);
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+.tagline {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.tagline > span {
+  font-weight: 700;
+}

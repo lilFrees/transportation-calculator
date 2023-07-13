@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.753edf1c.css",
-    "main.js": "/static/js/main.0554e951.js",
-    "static/media/truck-heading.png": "/static/media/truck-heading.695527ca849d3ab52b02.png",
+    "main.css": "/static/css/main.d06a3bad.css",
+    "main.js": "/static/js/main.6a1902da.js",
+    "static/media/truck-heading.png": "/static/media/truck-heading.3306dd414aa2a355f721.png",
     "index.html": "/index.html",
-    "main.753edf1c.css.map": "/static/css/main.753edf1c.css.map",
-    "main.0554e951.js.map": "/static/js/main.0554e951.js.map"
+    "main.d06a3bad.css.map": "/static/css/main.d06a3bad.css.map",
+    "main.6a1902da.js.map": "/static/js/main.6a1902da.js.map"
   },
   "entrypoints": [
-    "static/css/main.753edf1c.css",
-    "static/js/main.0554e951.js"
+    "static/css/main.d06a3bad.css",
+    "static/js/main.6a1902da.js"
   ]
 }

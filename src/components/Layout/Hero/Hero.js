@@ -10,7 +10,13 @@ const Hero = function () {
       <AlignCenter>
         <div className={style.container}>
           <Frame className={style.calculator}>
-            <h1>Prime Autotransport</h1>
+            <h1 className={style.heading}>
+              How much does shipping your Vehicle cost?
+            </h1>
+            <p className={style.tagline}>
+              <span>Free Online Calculator</span> based on quotes from Trusted
+              Shipping Companies
+            </p>
             <Calculator />
           </Frame>
           <Frame className={style.map} overflow={true}>
