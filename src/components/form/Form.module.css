@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  position: relative;
   background-color: rgb(225, 232, 233);
   padding: 1rem;
   border-radius: 12px;
@@ -50,14 +49,24 @@ select.input {
   width: max-content;
   background-color: transparent;
   border: none;
-  color: var(--white);
-  position: absolute;
-  top: -2rem;
-  left: 5px;
+  color: rgb(61, 61, 61);
   cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 0.1;
 }
 .back:hover {
-  text-decoration: underline;
+  color: rgb(145, 145, 145);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.actions button {
+  flex-grow: 1;
+  flex-basis: 50%;
 }
 
 .hidden {

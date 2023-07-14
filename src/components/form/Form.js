@@ -266,15 +266,6 @@ const Form = () => {
       )}
       {step === 1 && (
         <>
-          <button
-            type="button"
-            onClick={() => {
-              setStep(0);
-            }}
-            className={style.back}
-          >
-            Back
-          </button>
           <label htmlFor="first_name" className={style.label}>
             Full Name
             <input
@@ -328,10 +319,26 @@ const Form = () => {
         ref={formRef}
       />
 
-      <Button type={step === 0 ? "submit" : "button"} onClick={stepHandler}>
-        {loading && "Loading..."}
-        {!loading && (step === 0 ? "Next Step" : "Submit")}
-      </Button>
+      <div className={style.actions}>
+        {step === 1 && (
+          <Button
+            type="button"
+            onClick={() => {
+              setStep(0);
+            }}
+            className={style.back}
+            color={"#555"}
+            bgColor={"#bbb"}
+          >
+            Previous Step
+          </Button>
+        )}
+
+        <Button type={step === 0 ? "submit" : "button"} onClick={stepHandler}>
+          {loading && "Loading..."}
+          {!loading && (step === 0 ? "Next Step" : "Submit")}
+        </Button>
+      </div>
       <ToastContainer
         position="top-right"
         autoClose={5000}
