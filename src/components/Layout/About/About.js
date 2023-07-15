@@ -17,7 +17,7 @@ const About = function () {
     padding: "2rem",
   };
   return (
-    <div className={style.about}>
+    <div className={style.about} id="how">
       <AlignCenter>
         <div className={style.heading}>
           <h2 className={style.title}>How it works</h2>

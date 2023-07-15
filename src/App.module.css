@@ -1,6 +1,7 @@
 .app {
   width: 100%;
   background-color: var(--dark2);
+  position: relative;
 }
 
 .hidden {

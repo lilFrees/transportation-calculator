@@ -1,15 +1,32 @@
 .nav {
+  position: relative;
   background-color: rgb(247, 251, 255);
-  padding: 0.5rem 0;
   height: 5rem;
+  margin-block: auto;
+  z-index: 9999;
+}
+
+@media only screen and (max-width: 992px) {
+  .nav {
+    height: 4rem;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav {
+    height: 3.5rem;
+  }
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(2, max-content) 1fr;
   align-items: center;
+  place-content: center;
   margin-inline: auto;
   gap: 3rem;
+  height: inherit;
 }
 
 @media only screen and (max-width: 992px) {
@@ -66,4 +83,18 @@
 .call:hover {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   transform: translateY(-0.2rem);
+}
+
+.sticky {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }

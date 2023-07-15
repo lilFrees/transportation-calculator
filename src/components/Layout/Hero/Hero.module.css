@@ -29,6 +29,15 @@
   .calculator {
     flex-basis: 100%;
   }
+
+  .heading,
+  .tagline {
+    text-align: center;
+  }
+  .heading {
+    max-width: 22ch;
+    margin-inline: auto;
+  }
 }
 
 .map {
