@@ -215,98 +215,134 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={submitHandler} className={style.form}>
-      {step === 0 && (
-        <>
-          <ZipInput
-            label="From (Zip Code):"
-            id="zip1"
-            name="from_geo"
-            value={state.zipcode1}
-            onFocus={focus1Handler}
-            onBlur={focus1Handler}
-            onChange={zipCodeChangeHandler1}
-            isFocused={state.input1Focused}
-            filteredZipCodes={filteredZipCodes1}
-            onHide={chooseLocationHandler}
-            listId={1}
-          />
+    <>
+      <form onSubmit={submitHandler} className={style.form}>
+        {step === 0 && (
+          <>
+            <ZipInput
+              label="From (Zip Code):"
+              id="zip1"
+              name="from_geo"
+              value={state.zipcode1}
+              onFocus={focus1Handler}
+              onBlur={focus1Handler}
+              onChange={zipCodeChangeHandler1}
+              isFocused={state.input1Focused}
+              filteredZipCodes={filteredZipCodes1}
+              onHide={chooseLocationHandler}
+              listId={1}
+            />
 
-          <ZipInput
-            label="To (Zip Code):"
-            id="zip2"
-            name="to_geo"
-            value={state.zipcode2}
-            onFocus={focus2Handler}
-            onBlur={focus2Handler}
-            onChange={zipCodeChangeHandler2}
-            isFocused={state.input2Focused}
-            filteredZipCodes={filteredZipCodes2}
-            c
-            onHide={chooseLocationHandler}
-            listId={2}
-          />
+            <ZipInput
+              label="To (Zip Code):"
+              id="zip2"
+              name="to_geo"
+              value={state.zipcode2}
+              onFocus={focus2Handler}
+              onBlur={focus2Handler}
+              onChange={zipCodeChangeHandler2}
+              isFocused={state.input2Focused}
+              filteredZipCodes={filteredZipCodes2}
+              c
+              onHide={chooseLocationHandler}
+              listId={2}
+            />
 
-          <input
-            type="text"
-            id="car"
-            className={style.hidden}
-            value={chosenCar}
-            name="vehicle_type"
-            readOnly
-          />
-          <label className={style.label}>Type of vehicle:</label>
-
-          <SelectDrop
-            onChange={(e) => {
-              setChosenCar(e);
-            }}
-          />
-        </>
-      )}
-      {step === 1 && (
-        <>
-          <label htmlFor="first_name" className={style.label}>
-            Full Name
             <input
               type="text"
-              id="first_name"
-              className={style.input}
-              required
-              autoComplete="off"
-              onChange={changeNameHandler}
-              value={state.fullName}
-              name="full_name"
+              id="car"
+              className={style.hidden}
+              value={chosenCar}
+              name="vehicle_type"
+              readOnly
             />
-          </label>
-          <label htmlFor="phone_number" className={style.label}>
-            Phone Number
-            <input
-              type="text"
-              id="phone_number"
-              className={style.input}
-              required
-              autoComplete="off"
-              onChange={changePhoneHandler}
-              value={state.phoneNumber}
-              name="phone_number"
-            />
-          </label>
-          <label htmlFor="email" className={style.label}>
-            Email
-            <input
-              type="email"
-              id="email"
-              className={style.input}
-              required
-              autoComplete="off"
-              onChange={changeMailHandler}
-              value={state.email}
-              name="email"
-            />
-          </label>
-        </>
-      )}
+            <div className={style.label}>
+              Type of vehicle:
+              <SelectDrop
+                onChange={(e) => {
+                  setChosenCar(e);
+                }}
+              />
+            </div>
+          </>
+        )}
+        {step === 1 && (
+          <>
+            <label htmlFor="first_name" className={style.label}>
+              Full Name
+              <input
+                type="text"
+                id="first_name"
+                className={style.input}
+                required
+                autoComplete="off"
+                onChange={changeNameHandler}
+                value={state.fullName}
+                name="full_name"
+              />
+            </label>
+            <label htmlFor="phone_number" className={style.label}>
+              Phone Number
+              <input
+                type="text"
+                id="phone_number"
+                className={style.input}
+                required
+                autoComplete="off"
+                onChange={changePhoneHandler}
+                value={state.phoneNumber}
+                name="phone_number"
+              />
+            </label>
+            <label htmlFor="email" className={style.label}>
+              Email
+              <input
+                type="email"
+                id="email"
+                className={style.input}
+                required
+                autoComplete="off"
+                onChange={changeMailHandler}
+                value={state.email}
+                name="email"
+              />
+            </label>
+          </>
+        )}
+
+        <div className={style.actions}>
+          {step === 1 && (
+            <Button
+              type="button"
+              onClick={() => {
+                setStep(0);
+              }}
+              className={style.back}
+              color={"#555"}
+              bgColor={"#bbb"}
+            >
+              Previous Step
+            </Button>
+          )}
+
+          <Button type={step === 0 ? "submit" : "button"} onClick={stepHandler}>
+            {loading && "Loading..."}
+            {!loading && (step === 0 ? "Next Step" : "Submit")}
+          </Button>
+        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </form>
       <FormStorage
         inputs={[
           { name: "from_geo", value: state.zipcode1 },
@@ -316,42 +352,10 @@ const Form = () => {
           { name: "phone_number", value: state.phoneNumber },
           { name: "email", value: state.email },
         ]}
+        A37A74
         ref={formRef}
       />
-
-      <div className={style.actions}>
-        {step === 1 && (
-          <Button
-            type="button"
-            onClick={() => {
-              setStep(0);
-            }}
-            className={style.back}
-            color={"#555"}
-            bgColor={"#bbb"}
-          >
-            Previous Step
-          </Button>
-        )}
-
-        <Button type={step === 0 ? "submit" : "button"} onClick={stepHandler}>
-          {loading && "Loading..."}
-          {!loading && (step === 0 ? "Next Step" : "Submit")}
-        </Button>
-      </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-    </form>
+    </>
   );
 };
 

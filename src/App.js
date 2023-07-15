@@ -5,6 +5,7 @@ import Success from "./components/submit/Success";
 import NavBar from "./components/Layout/NavBar/NavBar";
 import Hero from "./components/Layout/Hero/Hero";
 import About from "./components/Layout/About/About";
+import Testimonials from "./components/Layout/Testimonials/Testimonials";
 
 function App() {
   const { isVerified } = useContext(VerificationContext);
@@ -15,6 +16,7 @@ function App() {
       <NavBar />
       <Hero />
       <About />
+      <Testimonials />
     </div>
   );
 }

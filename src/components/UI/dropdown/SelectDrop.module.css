@@ -20,6 +20,7 @@
   color: (--dark);
   cursor: pointer;
   text-align: left;
+  margin-top: 0.7rem;
 }
 
 .frame {

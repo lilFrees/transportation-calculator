@@ -1,4 +1,4 @@
-import style from "./Testimonials.module.css";
+// import style from "./Testimonials.module.css";
 
 const Testimonials = function () {
   return <div>Testimonials</div>;

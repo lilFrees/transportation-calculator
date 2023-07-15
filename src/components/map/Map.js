@@ -18,7 +18,22 @@ const coordFetchZipHandler = async function (zipCode) {
 };
 
 const coordFetchCityHandler = async function (city, state) {
-  console.log(city, state);
+  const cityVal = city.toLowerCase();
+  try {
+    const response = await axios.get(
+      `https://api.api-ninjas.com/v1/geocoding?city=${cityVal}&state=${state}&country=US`,
+      {
+        headers: { "X-Api-Key": "6e2dXDpxEkF86J1lH7j8cA==jmbt7WPeGVoBvXRI" },
+        contentType: "application/json",
+      }
+    );
+    const longitude = response.data[0].longitude;
+    const latitude = response.data[0].latitude;
+    return { latitude, longitude };
+  } catch (error) {
+    console.error("Error fetching city coordinates", error);
+    return null;
+  }
 };
 
 const Map = function () {
@@ -39,7 +54,9 @@ const Map = function () {
         setCoordinates((prev) => ({ ...prev, place1: coords }));
       }
       if (place2Zip) {
-        const coords = await coordFetchZipHandler(place2Zip.zip);
+        const coords = place2Zip.zip
+          ? await coordFetchZipHandler(place2Zip.zip)
+          : await coordFetchCityHandler(place2Zip.city, place2Zip.state);
         setCoordinates((prev) => ({ ...prev, place2: coords }));
       }
     };
