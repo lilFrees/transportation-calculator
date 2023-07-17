@@ -6,7 +6,7 @@ import Map from "../../map/Map";
 
 const Hero = function () {
   return (
-    <div className={style.hero}>
+    <div className={style.hero} id="hero">
       <AlignCenter>
         <div className={style.container}>
           <Frame className={style.calculator}>
