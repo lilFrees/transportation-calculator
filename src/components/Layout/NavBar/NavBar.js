@@ -12,8 +12,8 @@ const NavBar = function () {
           <a href="#how" className={style.link}>
             How it works
           </a>
-          <a href="#" className={style.link}>
-            Link 2
+          <a href="#faq" className={style.link}>
+            F.A.Q
           </a>
           <a href="#" className={style.link}>
             Link 3

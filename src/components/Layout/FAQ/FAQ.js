@@ -12,8 +12,9 @@ const FAQ = function () {
     setActive(key === active ? null : key);
   };
   return (
-    <div className={style.faq}>
+    <div className={style.faq} id="faq">
       <AlignCenter>
+        <h2 className={style.heading}>Frequently Asked Questions</h2>
         {Questions.map((faq, i) => {
           return (
             <FaqItem

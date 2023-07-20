@@ -52,6 +52,10 @@ const reducer = (state, action) => {
       return { ...state, phoneNumber: action.payload };
     case "SET_EMAIL":
       return { ...state, email: action.payload };
+    case "SET_ERRORS":
+      return { ...state, errors: action.payload };
+    case "SET_VEHICLE_TYPE":
+      return { ...state, vehicleType: action.payload };
     default:
       return state;
   }
@@ -96,32 +100,73 @@ const Form = () => {
     });
   };
 
+  const validateInput = (state) => {
+    const errors = {};
+
+    // Validate zip codes
+    const zipRegex = /^[0-9]{5}$/;
+    if (!zipRegex.test(state.zipcode1)) {
+      errors.zipcode1 = "Invalid Zip Code 1";
+    }
+    if (!zipRegex.test(state.zipcode2)) {
+      errors.zipcode2 = "Invalid Zip Code 2";
+    }
+
+    // Validate full name
+    const nameRegex = /^[a-zA-Z ]+$/;
+    if (!nameRegex.test(state.fullName)) {
+      errors.fullName = "Invalid Full Name";
+    }
+
+    // Validate phone number
+    const phoneRegex = /^\d{10}$/; // This is a simple regex for 10 digit number. Adjust it according to your needs.
+    if (!phoneRegex.test(state.phoneNumber)) {
+      errors.phoneNumber = "Invalid Phone Number";
+    }
+
+    // Validate email
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(state.email)) {
+      errors.email = "Invalid Email";
+    }
+
+    return errors;
+  };
+
   const submitHandler = function (e) {
     e.preventDefault();
 
-    setLoading(true);
+    const errors = validateInput(state);
 
-    console.log(formRef.current);
+    console.log(state);
 
-    emailjs
-      .sendForm(
-        "service_isz7fji",
-        "template_ei768ps",
-        formRef.current,
-        "MtPs8eVT0a2ozx5EU"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          notifySuccess();
-          setLoading(false);
-          ctx.onVerification();
-        },
-        (error) => {
-          console.log(error.text);
-          notifyFail();
-        }
-      );
+    if (Object.keys(errors).length > 0) {
+      dispatch({ type: "SET_ERRORS", payload: errors });
+    } else {
+      setLoading(true);
+
+      console.log(formRef.current);
+
+      emailjs
+        .sendForm(
+          "service_isz7fji",
+          "template_ei768ps",
+          formRef.current,
+          "MtPs8eVT0a2ozx5EU"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            notifySuccess();
+            setLoading(false);
+            ctx.onVerification();
+          },
+          (error) => {
+            console.log(error.text);
+            notifyFail();
+          }
+        );
+    }
   };
 
   const listOfZipCodes = Database;
@@ -263,6 +308,9 @@ const Form = () => {
                   setChosenCar(e);
                 }}
               />
+              {state.errors && state.errors.vehicleType && (
+                <p>{state.errors.fullName}</p>
+              )}
             </div>
           </>
         )}
@@ -280,6 +328,9 @@ const Form = () => {
                 value={state.fullName}
                 name="full_name"
               />
+              {state.errors && state.errors.fullName && (
+                <p>{state.errors.fullName}</p>
+              )}
             </label>
             <label htmlFor="phone_number" className={style.label}>
               Phone Number
@@ -325,7 +376,7 @@ const Form = () => {
             </Button>
           )}
 
-          <Button type={step === 0 ? "submit" : "button"} onClick={stepHandler}>
+          <Button type={step === 0 ? "submit" : "button"}>
             {loading && "Loading..."}
             {!loading &&
               (step === 0 ? "Get Shipping Estimate - Free" : "Submit")}
