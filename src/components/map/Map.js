@@ -42,6 +42,9 @@ const Map = function () {
     place2: null,
   });
 
+  const [city1, setCity1] = useState("");
+  const [city2, setCity2] = useState("");
+
   useEffect(() => {
     const fetchCoordsAndZipcodes = async function () {
       const place1Zip = JSON.parse(localStorage.getItem("place1"));
@@ -52,12 +55,14 @@ const Map = function () {
           ? await coordFetchZipHandler(place1Zip.zip)
           : await coordFetchCityHandler(place1Zip.city, place1Zip.state);
         setCoordinates((prev) => ({ ...prev, place1: coords }));
+        setCity1(`${place1Zip.city}, ${place1Zip.state}`);
       }
       if (place2Zip) {
         const coords = place2Zip.zip
           ? await coordFetchZipHandler(place2Zip.zip)
           : await coordFetchCityHandler(place2Zip.city, place2Zip.state);
         setCoordinates((prev) => ({ ...prev, place2: coords }));
+        setCity2(`${place2Zip.city}, ${place2Zip.state}`);
       }
     };
 
@@ -98,7 +103,7 @@ const Map = function () {
             icon={customIcon}
           >
             <Popup>
-              <h4>Marker 1</h4>
+              <h4>{city1}</h4>
             </Popup>
           </Marker>
         )}
@@ -111,7 +116,7 @@ const Map = function () {
             icon={customIcon}
           >
             <Popup>
-              <h4>Marker 2</h4>
+              <h4>{city2}</h4>
             </Popup>
           </Marker>
         )}

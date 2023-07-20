@@ -14,25 +14,25 @@ const CTA = function () {
         <div className={style.content}>
           <div className={style.card}>
             <div className={style["icon-box"]}>
-              <img src={tick} className={style.icon} />
+              <img src={tick} className={style.icon} alt="tick" />
             </div>
             <h4 className={style["card-title"]}>Vetted shippers only</h4>
           </div>
           <div className={style.card}>
             <div className={style["icon-box"]}>
-              <img src={money} className={style.icon} />
+              <img src={money} className={style.icon} alt="money" />
             </div>
             <h4 className={style["card-title"]}>Save up to 50%</h4>
           </div>
           <div className={style.card}>
             <div className={style["icon-box"]}>
-              <img src={stopwatch} className={style.icon} />
+              <img src={stopwatch} className={style.icon} alt="stopwatch" />
             </div>
             <h4 className={style["card-title"]}>Fast online booking</h4>
           </div>
         </div>
         <a href="#hero" className={style.button}>
-          Get your instant quote
+          Get your instant FREE quote
         </a>
       </div>
     </div>

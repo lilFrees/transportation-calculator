@@ -6,7 +6,7 @@ import NavBar from "./components/Layout/NavBar/NavBar";
 import Hero from "./components/Layout/Hero/Hero";
 import About from "./components/Layout/About/About";
 import CTA from "./components/Layout/CTA/CTA";
-import FAQ from "./components/FAQ/FAQ";
+import FAQ from "./components/Layout/FAQ/FAQ";
 
 function App() {
   const { isVerified } = useContext(VerificationContext);

@@ -327,7 +327,8 @@ const Form = () => {
 
           <Button type={step === 0 ? "submit" : "button"} onClick={stepHandler}>
             {loading && "Loading..."}
-            {!loading && (step === 0 ? "Next Step" : "Submit")}
+            {!loading &&
+              (step === 0 ? "Get Shipping Estimate - Free" : "Submit")}
           </Button>
         </div>
         <ToastContainer
