@@ -10,6 +10,7 @@ const Success = function () {
   const clickHandler = function () {
     ctx.onGoBack();
     localStorage.clear();
+    window.location.reload();
   };
 
   return (

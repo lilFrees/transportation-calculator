@@ -93,6 +93,8 @@ const Form = () => {
     vehicleType: state.vehicleType.length > 0 ? true : false,
     zipCode1: state.zipcode1 ? true : false,
     zipCode2: state.zipcode2 ? true : false,
+    brand: state.make ? true : false,
+    model: state.model ? true : false,
   });
 
   const notifySuccess = function () {
@@ -130,26 +132,7 @@ const Form = () => {
 
     setMount(true);
 
-    if (step < 2) {
-      const nameRegex = /^[a-zA-Z ]+$/;
-
-      const phoneRegex = /^\d{11,}$/;
-
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-      setErrors({
-        ...errors,
-        zipCode1: localStorage.getItem("place1") ? true : false,
-        zipCode2: localStorage.getItem("place2") ? true : false,
-        vehicleType: state.vehicleType ? true : false,
-        email: emailRegex.test(state.email) ? true : false,
-        phoneNumber: phoneRegex.test(state.phoneNumber) ? true : false,
-        fullName: nameRegex.test(state.fullName) ? true : false,
-      });
-      errors.zipCode1 && errors.zipCode2 && errors.vehicleType && setStep(1);
-      errors.year && errors.make && errors.model && setStep(2);
-      errors.fullName && errors.email && errors.phoneNumber && setStep(3);
-    } else if (Object.values(errors).every((value) => value === true)) {
+    const submitFormHandler = function () {
       setLoading(true);
 
       emailjs
@@ -165,6 +148,8 @@ const Form = () => {
             setLoading(false);
             ctx.onVerification();
             console.log(result);
+            setStep(0);
+            localStorage.clear();
           },
           (error) => {
             notifyFail();
@@ -172,6 +157,36 @@ const Form = () => {
             setLoading(false);
           }
         );
+    };
+
+    if (step < 3) {
+      const nameRegex = /^[a-zA-Z ]+$/;
+
+      const phoneRegex = /^\d{11,}$/;
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      setErrors({
+        ...errors,
+        zipCode1: localStorage.getItem("place1") ? true : false,
+        zipCode2: localStorage.getItem("place2") ? true : false,
+        vehicleType: state.vehicleType ? true : false,
+        email: emailRegex.test(state.email) ? true : false,
+        phoneNumber: phoneRegex.test(state.phoneNumber) ? true : false,
+        fullName: nameRegex.test(state.fullName) ? true : false,
+      });
+      if (errors.zipCode1 && errors.zipCode2 && errors.vehicleType) {
+        console.log("Step 1");
+        setStep(1);
+      }
+      if (errors.year && errors.make && errors.model) {
+        console.log("Step 2");
+        setStep(2);
+      }
+      if (errors.fullName && errors.email && errors.phoneNumber) {
+        console.log("Step 3");
+        submitFormHandler();
+      }
     }
   };
 
@@ -301,6 +316,7 @@ const Form = () => {
 
   const selectModelHandler = function (e) {
     dispatch({ type: "SET_MODEL", payload: e });
+    console.log("Select model");
     setErrors({ ...errors, model: true });
 
     setTimeout(() => {
@@ -310,11 +326,12 @@ const Form = () => {
 
   const changeBrandHandler = function (event) {
     const make = event.target.value;
-
+    setErrors({ ...errors, make: true });
     dispatch({ type: "SET_BRAND", payload: make });
   };
 
   const selectBrandHandler = function (e) {
+    console.log("Select Brand");
     dispatch({ type: "SET_BRAND", payload: e });
     setErrors({ ...errors, make: true });
     focus3Handler();
