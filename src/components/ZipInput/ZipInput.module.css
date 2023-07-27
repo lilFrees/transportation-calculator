@@ -7,7 +7,7 @@
 
 .input {
   padding: 0.7rem;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 8px;
   margin-top: 0.7rem;
   font-size: 1rem;
@@ -25,4 +25,8 @@ select.input {
 .input:focus {
   outline: 2px solid var(--brand-color);
   box-shadow: none;
+}
+
+.error {
+  border: 2px solid rgb(252, 60, 35);
 }

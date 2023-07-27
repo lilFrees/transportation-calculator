@@ -1,5 +1,5 @@
 import style from "./ZipInput.module.css";
-import CityOptionsList from "../UI/zipcode/CityOptionsList";
+import OptionsList from "../UI/zipcode/OptionsList";
 
 const ZipInput = function ({
   label,
@@ -13,6 +13,8 @@ const ZipInput = function ({
   filteredZipCodes,
   onHide,
   listId,
+  error,
+  onPick,
 }) {
   return (
     <label htmlFor={id} className={style.label}>
@@ -21,7 +23,7 @@ const ZipInput = function ({
         type="text"
         id={id}
         name={name}
-        className={style.input}
+        className={`${style.input} ${error && style.error}`}
         onFocus={onFocus}
         onBlur={() => {
           setTimeout(() => {
@@ -32,21 +34,17 @@ const ZipInput = function ({
         value={value}
         autoComplete="off"
       />
+      {error && <p>Invalid Zip Code</p>}
       {isFocused && (
-        <CityOptionsList
+        <OptionsList
           list={filteredZipCodes}
           onHide={onHide}
           listId={listId}
+          onPick={onPick}
         />
       )}
     </label>
   );
 };
-
-// ({
-//
-// }) => (
-//
-// );
 
 export default ZipInput;

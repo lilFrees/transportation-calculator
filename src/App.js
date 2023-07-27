@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import style from "./App.module.css";
 import { VerificationContext } from "./components/verification/VerificationContext";
 import Success from "./components/submit/Success";
@@ -12,13 +12,13 @@ function App() {
   const { isVerified } = useContext(VerificationContext);
 
   return (
-    <div className={style.app}>
+    <div className={`${style.app} ${isVerified ? style.still : ""}`}>
       {isVerified && <Success />}
       <NavBar />
       <Hero />
       <About />
-      <CTA />
       <FAQ />
+      <CTA />
     </div>
   );
 }

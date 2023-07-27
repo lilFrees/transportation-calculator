@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const SelectDrop = (props) => {
-  const [chosenCar, setChosenCar] = useState("Default");
+  // const [chosenCar, setChosenCar] = useState(props.chosenCar);
   const [optionsAreShown, setOptionsAreShown] = useState(false);
 
   const ref = useRef(null);
@@ -86,15 +86,10 @@ const SelectDrop = (props) => {
   ];
 
   const showOptionsHandler = function () {
-    if (optionsAreShown) {
-      setOptionsAreShown(false);
-    } else {
-      setOptionsAreShown(true);
-    }
+    setOptionsAreShown(!optionsAreShown);
   };
 
   const chooseHandler = function (car) {
-    setChosenCar(car.name);
     setOptionsAreShown(false);
     props.onChange(car.name);
   };
@@ -103,12 +98,12 @@ const SelectDrop = (props) => {
     <div className={style.dropdown} ref={ref}>
       <div className={style.select} id="toggle">
         <button
-          className={style.default}
+          className={`${style.default} ${props.error ? style.error : ""}`}
           id="toggle"
           type="button"
           onClick={showOptionsHandler}
         >
-          {chosenCar}
+          {props.car || "Default"}
         </button>
       </div>
       <div className={style.frame}>
