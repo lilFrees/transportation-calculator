@@ -15,9 +15,6 @@ const NavBar = function () {
           <a href="#faq" className={style.link}>
             F.A.Q
           </a>
-          <a href="#" className={style.link}>
-            Link 3
-          </a>
         </div>
         <a href="#" className={style.call}>
           Call Us

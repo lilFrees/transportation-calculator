@@ -1,6 +1,5 @@
 import style from "./Form.module.css";
 import Button from "../UI/Button/Button";
-import SelectDrop from "../UI/dropdown/SelectDrop";
 import { useReducer, useRef, useState, useContext, useEffect } from "react";
 import Database from "../../resource/USCities.json";
 import CapitalsOfStates from "../../resource/States.json";
@@ -83,7 +82,6 @@ const Form = () => {
 
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [chosenCar, setChosenCar] = useState("Default");
   const [step, setStep] = useState(0);
   const [mount, setMount] = useState(false);
   const [errors, setErrors] = useState({
@@ -170,12 +168,11 @@ const Form = () => {
         ...errors,
         zipCode1: localStorage.getItem("place1") ? true : false,
         zipCode2: localStorage.getItem("place2") ? true : false,
-        vehicleType: state.vehicleType ? true : false,
         email: emailRegex.test(state.email) ? true : false,
         phoneNumber: phoneRegex.test(state.phoneNumber) ? true : false,
         fullName: nameRegex.test(state.fullName) ? true : false,
       });
-      if (errors.zipCode1 && errors.zipCode2 && errors.vehicleType) {
+      if (errors.zipCode1 && errors.zipCode2) {
         console.log("Step 1");
         setStep(1);
       }
@@ -295,13 +292,6 @@ const Form = () => {
     setErrors({ ...errors, email: !emailRegex.test(email) ? false : true });
   };
 
-  const chooseVehicleTypeHandler = function (event) {
-    dispatch({ type: "SET_VEHICLE_TYPE", payload: event });
-    setChosenCar(event);
-
-    setErrors({ ...errors, vehicleType: true });
-  };
-
   const changeYearHandler = function (event) {
     const year = event.target.value;
     dispatch({ type: "SET_YEAR", payload: event.target.value });
@@ -410,26 +400,6 @@ const Form = () => {
               error={!errors.zipCode2 && mount}
               onPick={pickHandler2}
             />
-
-            <input
-              type="text"
-              id="car"
-              className={style.hidden}
-              value={chosenCar}
-              name="vehicle_type"
-              readOnly
-            />
-            <div className={style.label}>
-              Type of vehicle:
-              <SelectDrop
-                onChange={chooseVehicleTypeHandler}
-                error={!errors.vehicleType && mount}
-                car={state.vehicleType}
-              />
-              {!errors.vehicleType && mount && (
-                <p className={style.errorMsg}>Select vehicle type</p>
-              )}
-            </div>
           </>
         )}
         {step === 1 && (
@@ -438,7 +408,6 @@ const Form = () => {
               Year
               <input
                 type="number"
-                min={1980}
                 max={2023}
                 id="year"
                 className={`${style.input} ${
@@ -587,6 +556,15 @@ const Form = () => {
         )}
 
         <div className={style.actions}>
+          <Button type="submit">
+            {loading && "Loading..."}
+            {!loading &&
+              (step === 0
+                ? "Get Shipping Estimate - Free"
+                : step === 1
+                ? "Continue to the Final Step"
+                : "Submit")}
+          </Button>
           {step !== 0 && (
             <Button
               type="button"
@@ -600,12 +578,6 @@ const Form = () => {
               Previous Step
             </Button>
           )}
-
-          <Button type="submit">
-            {loading && "Loading..."}
-            {!loading &&
-              (step === 0 ? "Get Shipping Estimate - Free" : "Submit")}
-          </Button>
         </div>
         <ToastContainer
           position="top-right"
@@ -624,7 +596,6 @@ const Form = () => {
         inputs={[
           { name: "from_geo", value: state.zipcode1 },
           { name: "to_geo", value: state.zipcode2 },
-          { name: "vehicle_type", value: chosenCar },
           { name: "full_name", value: state.fullName },
           { name: "phone_number", value: state.phoneNumber },
           { name: "email", value: state.email },

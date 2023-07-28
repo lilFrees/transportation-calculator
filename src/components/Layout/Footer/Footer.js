@@ -7,7 +7,6 @@ const Footer = function () {
       <AlignCenter>
         <div className={style.container}>
           <div className={style.copyright}>&copy; Prime Auto Transport</div>
-          <div className={style.contact}>Phone Number And Address</div>
         </div>
       </AlignCenter>
     </div>

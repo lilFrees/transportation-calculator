@@ -5,15 +5,7 @@
   background-color: rgb(225, 232, 233);
   padding: 1rem;
   border-radius: 12px;
-  /* border: 3px solid rgb(212, 212, 212); */
 }
-
-/* @media only screen and (max-width: 1000px) {
-  .form {
-    max-width: 100%;
-    padding: 0 5rem;
-  }
-} */
 
 .label {
   display: flex;
@@ -51,9 +43,7 @@ select.input {
   border: none;
   color: rgb(61, 61, 61);
   cursor: pointer;
-  padding: 0.5rem;
   font-size: 1rem;
-  line-height: 0.1;
 }
 .back:hover {
   color: rgb(145, 145, 145);
@@ -61,6 +51,7 @@ select.input {
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
