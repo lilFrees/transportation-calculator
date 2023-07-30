@@ -37,7 +37,7 @@ const initialState = {
   phoneNumber: undefined,
   email: "",
   vehicleType: "",
-  year: null,
+  year: undefined,
   make: "",
   model: "",
 };
@@ -145,13 +145,11 @@ const Form = () => {
             notifySuccess();
             setLoading(false);
             ctx.onVerification();
-            console.log(result);
             setStep(0);
             localStorage.clear();
           },
           (error) => {
             notifyFail();
-            console.log(error);
             setLoading(false);
           }
         );
@@ -173,15 +171,12 @@ const Form = () => {
         fullName: nameRegex.test(state.fullName) ? true : false,
       });
       if (errors.zipCode1 && errors.zipCode2) {
-        console.log("Step 1");
         setStep(1);
       }
       if (errors.year && errors.make && errors.model) {
-        console.log("Step 2");
         setStep(2);
       }
       if (errors.fullName && errors.email && errors.phoneNumber) {
-        console.log("Step 3");
         submitFormHandler();
       }
     }
@@ -306,7 +301,6 @@ const Form = () => {
 
   const selectModelHandler = function (e) {
     dispatch({ type: "SET_MODEL", payload: e });
-    console.log("Select model");
     setErrors({ ...errors, model: true });
 
     setTimeout(() => {
@@ -321,7 +315,6 @@ const Form = () => {
   };
 
   const selectBrandHandler = function (e) {
-    console.log("Select Brand");
     dispatch({ type: "SET_BRAND", payload: e });
     setErrors({ ...errors, make: true });
     focus3Handler();

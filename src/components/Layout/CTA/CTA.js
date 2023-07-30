@@ -16,19 +16,19 @@ const CTA = function () {
             <div className={style["icon-box"]}>
               <img src={tick} className={style.icon} alt="tick" />
             </div>
-            <h4 className={style["card-title"]}>Vetted shippers only</h4>
+            <h3 className={style["card-title"]}>Vetted shippers only</h3>
           </div>
           <div className={style.card}>
             <div className={style["icon-box"]}>
               <img src={money} className={style.icon} alt="money" />
             </div>
-            <h4 className={style["card-title"]}>Save up to 50%</h4>
+            <h3 className={style["card-title"]}>Save up to 50%</h3>
           </div>
           <div className={style.card}>
             <div className={style["icon-box"]}>
               <img src={stopwatch} className={style.icon} alt="stopwatch" />
             </div>
-            <h4 className={style["card-title"]}>Fast online booking</h4>
+            <h3 className={style["card-title"]}>Fast online booking</h3>
           </div>
         </div>
         <a href="#hero" className={style.button}>

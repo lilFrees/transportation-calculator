@@ -6,17 +6,15 @@ import Map from "../../map/Map";
 
 const Hero = function () {
   return (
-    <div className={style.hero} id="hero">
+    <article className={style.hero} id="hero">
       <AlignCenter>
         <div className={style.container}>
           <Frame className={style.calculator}>
-            <h1 className={style.heading}>
-              How much does shipping your Vehicle cost?
-            </h1>
-            <p className={style.tagline}>
+            <h1 className={style.heading}>Car shipping across USA</h1>
+            <h2 className={style.tagline}>
               <span>Free Online Calculator</span> based on quotes from Trusted
               Shipping Companies
-            </p>
+            </h2>
             <Calculator />
           </Frame>
           <Frame className={style.map} overflow={true}>
@@ -24,7 +22,7 @@ const Hero = function () {
           </Frame>
         </div>
       </AlignCenter>
-    </div>
+    </article>
   );
 };
 
