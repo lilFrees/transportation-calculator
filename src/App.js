@@ -8,19 +8,29 @@ import About from "./components/Layout/About/About";
 import CTA from "./components/Layout/CTA/CTA";
 import FAQ from "./components/Layout/FAQ/FAQ";
 import Footer from "./components/Layout/Footer/Footer";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const { isVerified } = useContext(VerificationContext);
 
   return (
     <div className={`${style.app} ${isVerified ? style.still : ""}`}>
-      {isVerified && <Success />}
-      <NavBar />
-      <Hero />
-      <About />
-      <FAQ />
-      <CTA />
-      <Footer />
+      <Routes>
+        <Route path="/success" element={isVerified && <Success />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <NavBar />
+              <Hero />
+              <About />
+              <FAQ />
+              <CTA />
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }

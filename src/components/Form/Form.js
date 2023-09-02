@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ZipInput from "../ZipInput/ZipInput";
 import FormStorage from "../FormStorage/FormStorage";
-import { OptionsApiList } from "../OptionsApiList/OptionsApiList";
+import OptionsApiList from "../OptionsApiList/OptionsApiList";
 
 const defaultZip1 =
   localStorage.getItem("place1") && JSON.parse(localStorage.getItem("place1"));
@@ -141,14 +141,14 @@ const Form = () => {
           "MtPs8eVT0a2ozx5EU"
         )
         .then(
-          (result) => {
+          () => {
             notifySuccess();
             setLoading(false);
             ctx.onVerification();
             setStep(0);
             localStorage.clear();
           },
-          (error) => {
+          () => {
             notifyFail();
             setLoading(false);
           }

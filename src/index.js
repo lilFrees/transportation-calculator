@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import EmailVerificationProvider from "./components/verification/VerificationContext";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <EmailVerificationProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </EmailVerificationProvider>
   </React.StrictMode>
 );

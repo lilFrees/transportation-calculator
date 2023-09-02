@@ -1,9 +1,9 @@
 import style from "./OptionsApiList.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import CarData from "../../resource/Car_Model_List.json";
 
-export const OptionsApiList = function (props) {
+const OptionsApiList = function (props) {
   const [selectedMake, setSelectedMake] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const filterList = CarData.results;
@@ -54,8 +54,7 @@ export const OptionsApiList = function (props) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
     >
-      {
-        matchingCars.length > 0 &&
+      {matchingCars.length > 0 &&
         uniqueList.map((obj, index) => {
           return (
             <button
@@ -74,3 +73,5 @@ export const OptionsApiList = function (props) {
     </motion.div>
   );
 };
+
+export default OptionsApiList;

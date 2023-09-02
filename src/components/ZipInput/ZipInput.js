@@ -16,6 +16,7 @@ const ZipInput = function ({
   error,
   onPick,
 }) {
+  console.log(isFocused);
   return (
     <label htmlFor={id} className={style.label}>
       {label}
@@ -28,7 +29,7 @@ const ZipInput = function ({
         onBlur={() => {
           setTimeout(() => {
             onBlur();
-          }, 100);
+          }, 200);
         }}
         onChange={onChange}
         value={value}

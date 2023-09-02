@@ -10,10 +10,12 @@ const Hero = function () {
       <AlignCenter>
         <div className={style.container}>
           <Frame className={style.calculator}>
-            <h1 className={style.heading}>Car shipping across USA</h1>
+            <h1 className={style.heading}>
+              Nationwide Car Shipping Services You Can Trust
+            </h1>
             <h2 className={style.tagline}>
-              <span>Free Online Calculator</span> based on quotes from Trusted
-              Shipping Companies
+              <span>Reliable, Secure, and Affordable</span> Vehicle Transport
+              Solutions
             </h2>
             <Calculator />
           </Frame>
