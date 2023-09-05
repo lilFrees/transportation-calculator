@@ -5,6 +5,14 @@
   background-color: rgb(225, 232, 233);
   padding: 1rem;
   border-radius: 12px;
+  min-height: 100%;
+  transition: 0.2s all;
+}
+
+@media only screen and (max-width: 992px) {
+  .form {
+    min-height: fit-content;
+  }
 }
 
 .label {
@@ -53,6 +61,7 @@ select.input {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-top: auto;
 }
 
 .actions button {

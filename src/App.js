@@ -1,36 +1,27 @@
 import React, { useContext } from "react";
 import style from "./App.module.css";
 import { VerificationContext } from "./components/verification/VerificationContext";
-import Success from "./components/submit/Success";
 import NavBar from "./components/Layout/NavBar/NavBar";
-import Hero from "./components/Layout/Hero/Hero";
-import About from "./components/Layout/About/About";
-import CTA from "./components/Layout/CTA/CTA";
-import FAQ from "./components/Layout/FAQ/FAQ";
-import Footer from "./components/Layout/Footer/Footer";
+import Home from "./Pages/Home";
+import AboutUs from "./Pages/AboutUs";
 import { Route, Routes } from "react-router-dom";
+import Services from "./Pages/Services";
+import Footer from "./components/Layout/Footer/Footer";
+import Contact from "./Pages/Contact";
 
 function App() {
   const { isVerified } = useContext(VerificationContext);
 
   return (
     <div className={`${style.app} ${isVerified ? style.still : ""}`}>
+      <NavBar />
       <Routes>
-        <Route path="/success" element={isVerified && <Success />} />
-        <Route
-          path="/"
-          element={
-            <>
-              <NavBar />
-              <Hero />
-              <About />
-              <FAQ />
-              <CTA />
-              <Footer />
-            </>
-          }
-        />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

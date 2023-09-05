@@ -2,6 +2,13 @@
   width: 100%;
   background-color: var(--dark2);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app > *:not(:last-child):not(:first-child) {
+  flex-grow: 1;
 }
 
 .hidden {

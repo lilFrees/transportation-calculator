@@ -2,7 +2,6 @@
   position: relative;
   background-color: rgb(247, 251, 255);
   height: 5rem;
-  margin-block: auto;
   z-index: 9999;
 }
 
@@ -27,6 +26,7 @@
   margin-inline: auto;
   gap: 3rem;
   height: inherit;
+  position: relative;
 }
 
 @media only screen and (max-width: 992px) {
@@ -52,15 +52,7 @@
 .links {
   display: flex;
   gap: 3rem;
-}
-
-@media only screen and (max-width: 768px) {
-  .links {
-    display: none;
-  }
-  .container {
-    grid-template-columns: max-content 1fr;
-  }
+  transition: 0.2s all;
 }
 
 .link {
@@ -69,6 +61,35 @@
   font-weight: 500;
 }
 
+.expanded {
+  height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .links {
+    /* display: none; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+  }
+  .link {
+    color: #fff;
+  }
+  .container {
+    grid-template-columns: max-content 1fr;
+  }
+
+  .expanded {
+    height: 10rem;
+    margin-bottom: 10rem;
+  }
+}
 .call {
   background-color: darkgreen;
   color: var(--white);
@@ -102,4 +123,17 @@
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.navToggle {
+  color: #000;
+  display: none;
+  position: absolute;
+  right: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .navToggle {
+    display: block;
+  }
 }

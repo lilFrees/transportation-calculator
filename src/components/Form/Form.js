@@ -553,7 +553,7 @@ const Form = () => {
             {loading && "Loading..."}
             {!loading &&
               (step === 0
-                ? "Get Shipping Estimate - Free"
+                ? "Get Your Shipping Quote Now"
                 : step === 1
                 ? "Continue to the Final Step"
                 : "Submit")}
@@ -596,7 +596,6 @@ const Form = () => {
           { name: "make", value: state.make },
           { name: "model", value: state.model },
         ]}
-        A37A74
         ref={formRef}
       />
     </>

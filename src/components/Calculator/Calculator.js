@@ -1,7 +1,7 @@
 import style from "./Calculator.module.css";
 import Form from "../Form/Form";
 
-const Calculator = function (props) {
+const Calculator = function () {
   return (
     <div className={style.calc}>
       <Form />

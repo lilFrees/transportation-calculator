@@ -16,7 +16,6 @@ const ZipInput = function ({
   error,
   onPick,
 }) {
-  console.log(isFocused);
   return (
     <label htmlFor={id} className={style.label}>
       {label}

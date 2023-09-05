@@ -1,0 +1,161 @@
+.section {
+  background-color: rgb(224, 240, 255);
+  padding: 5rem 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.heading,
+.sub-heading,
+.paragraph {
+  color: #222;
+}
+
+.heading {
+  font-size: 3rem;
+}
+
+.sub-heading {
+  font-size: 1.8rem;
+  color: rgb(71, 71, 71);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.paragraph {
+  font-size: 1.1rem;
+  color: rgb(105, 105, 105);
+  line-height: 1.5;
+}
+
+ol {
+  padding-left: 2rem;
+}
+
+.boxes {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  height: max-content;
+}
+
+.box {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact {
+  height: 100%;
+  padding: 5rem 0;
+  background: linear-gradient(
+      rgba(238, 238, 238, 0.7),
+      rgba(238, 238, 238, 0.9)
+    ),
+    url(../icons/fleet-of-trucks.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.contact h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact h2 {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 5rem;
+}
+
+.formBox {
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .formBox {
+    flex-direction: column;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  flex-basis: 60%;
+  padding: 4rem;
+}
+
+.info {
+  flex-basis: 40%;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+    var(--brand-color);
+  color: #fff;
+  padding: 4rem;
+}
+
+.infoBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.title {
+  color: var(--brand-color);
+}
+
+textarea {
+  resize: none;
+  overflow-x: hidden;
+  transition: 0.2s all;
+  min-height: 7rem;
+  max-height: 7rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.input,
+textarea {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #aaa;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  transition: 0.2s all;
+}
+.input:focus,
+textarea:focus {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05));
+}
+
+.label span {
+  position: absolute;
+  font-size: 0.9rem;
+  left: 0.6rem;
+  top: 0.6rem;
+  user-select: none;
+  cursor: text;
+  transition: top 0.3s ease;
+}
+
+.label.active span {
+  top: -1.2rem;
+  font-size: 0.8rem;
+  color: #555;
+}
