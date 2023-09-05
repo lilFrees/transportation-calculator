@@ -6,6 +6,8 @@
   background-color: var(--white);
   list-style: none;
   z-index: 5;
+  max-height: 12rem;
+  overflow: auto;
 }
 
 .list-element {

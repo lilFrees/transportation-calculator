@@ -1,23 +1,27 @@
 import React, { useContext } from "react";
 import style from "./App.module.css";
-import Map from "./components/map/Map";
-import Sidebar from "./components/sidebar/Sidebar";
 import { VerificationContext } from "./components/verification/VerificationContext";
-import Success from "./components/submit/Success";
+import NavBar from "./components/Layout/NavBar/NavBar";
+import Home from "./Pages/Home";
+import AboutUs from "./Pages/AboutUs";
+import { Route, Routes } from "react-router-dom";
+import Services from "./Pages/Services";
+import Footer from "./components/Layout/Footer/Footer";
+import Contact from "./Pages/Contact";
 
 function App() {
-  const ctx = useContext(VerificationContext);
-
-  console.log(ctx);
+  const { isVerified } = useContext(VerificationContext);
 
   return (
-    <div className={style.app}>
-      <>
-        <Sidebar className={style.sidebar} />
-        <div className={style.map}>
-          <Map />
-        </div>
-      </>
+    <div className={`${style.app} ${isVerified ? style.still : ""}`}>
+      <NavBar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

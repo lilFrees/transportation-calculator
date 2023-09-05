@@ -1,0 +1,77 @@
+.hero {
+  gap: 2rem;
+  color: #000807;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 0;
+  gap: 2rem;
+  height: max-content;
+}
+
+.calculator {
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    margin: 0 !important;
+  }
+
+  .calculator {
+    flex-basis: 100%;
+  }
+
+  .heading,
+  .tagline {
+    text-align: center;
+  }
+  .heading {
+    max-width: 22ch;
+    margin-inline: auto;
+  }
+}
+
+.map {
+  color: rgb(39, 39, 39);
+  flex-basis: 60%;
+  display: block;
+  height: 25rem;
+  width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .map {
+    display: none;
+  }
+}
+
+/* @media only screen and (max-width: 1200px) {
+  .map {
+    height: 20rem;
+    width: 100%;
+  }
+} */
+
+.heading {
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.tagline {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.tagline > span {
+  font-weight: 700;
+}

@@ -1,25 +1,23 @@
 .app {
   width: 100%;
-  height: 100vh;
-  background-color: rgb(241, 241, 241);
+  background-color: var(--dark2);
+  position: relative;
   display: flex;
-  color: #000807;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.map {
-  background-color: var(--brand-color);
-  color: rgb(39, 39, 39);
-  color: var(--white);
-  flex-basis: 60%;
-  height: 100vh;
-}
-
-@media only screen and (max-width: 1000px) {
-  .map {
-    display: none;
-  }
+.app > *:not(:last-child):not(:first-child) {
+  flex-grow: 1;
 }
 
 .hidden {
   display: none;
+}
+
+.still {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }

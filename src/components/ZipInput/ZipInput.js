@@ -1,38 +1,50 @@
 import style from "./ZipInput.module.css";
-import CityOptionsList from "../UI/zipcode/CityOptionsList";
+import OptionsList from "../UI/zipcode/OptionsList";
 
-const ZipInput = ({
+const ZipInput = function ({
   label,
   id,
   name,
   value,
   onFocus,
+  onBlur,
   onChange,
   isFocused,
   filteredZipCodes,
   onHide,
   listId,
-}) => (
-  <label htmlFor={id} className={style.label}>
-    {label}
-    <input
-      type="text"
-      id={id}
-      name={name}
-      className={style.input}
-      onFocus={onFocus}
-      onChange={onChange}
-      value={value}
-      autoComplete="off"
-    />
-    {isFocused && (
-      <CityOptionsList
-        list={filteredZipCodes}
-        onHide={onHide}
-        listId={listId}
+  error,
+  onPick,
+}) {
+  return (
+    <label htmlFor={id} className={style.label}>
+      {label}
+      <input
+        type="text"
+        id={id}
+        name={name}
+        className={`${style.input} ${error && style.error}`}
+        onFocus={onFocus}
+        onBlur={() => {
+          setTimeout(() => {
+            onBlur();
+          }, 200);
+        }}
+        onChange={onChange}
+        value={value}
+        autoComplete="off"
       />
-    )}
-  </label>
-);
+      {error && <p>Invalid Zip Code</p>}
+      {isFocused && (
+        <OptionsList
+          list={filteredZipCodes}
+          onHide={onHide}
+          listId={listId}
+          onPick={onPick}
+        />
+      )}
+    </label>
+  );
+};
 
 export default ZipInput;

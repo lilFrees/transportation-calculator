@@ -1,0 +1,38 @@
+@media only screen and (min-width: 768px) {
+  .fluid.align-center {
+    max-width: 100% !important;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .align-center {
+    max-width: 576px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .align-center {
+    max-width: 960px;
+  }
+  .fluid.align-center {
+    max-width: 100% !important;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .align-center {
+    max-width: 1140px;
+  }
+  /* .fluid.align-center {
+    max-width: 100% !important;
+    margin: 0;
+  } */
+}
+
+.align-center {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}

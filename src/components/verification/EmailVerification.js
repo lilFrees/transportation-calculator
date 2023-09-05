@@ -10,6 +10,9 @@ const EmailVerification = function (props) {
 
   const goBackHandler = function () {
     setIsVerified(false);
+    setTimeout(() => {
+      localStorage.clear();
+    }, 5000);
   };
 
   const emailVer = {

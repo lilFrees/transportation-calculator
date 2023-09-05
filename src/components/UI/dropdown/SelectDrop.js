@@ -1,84 +1,109 @@
 import style from "./SelectDrop.module.css";
 import DropDownOption from "../dropdownOption/DropDownOption";
-import { useState, forwardRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const SelectDrop = forwardRef((props, ref) => {
-  const [chosenCar, setChosenCar] = useState("Type of vehicle");
+const SelectDrop = (props) => {
+  // const [chosenCar, setChosenCar] = useState(props.chosenCar);
   const [optionsAreShown, setOptionsAreShown] = useState(false);
+
+  const ref = useRef(null);
+
+  function handleToggle(e) {
+    if (
+      ref.current &&
+      !ref.current.contains(e.target) &&
+      e.target.id !== "toggle"
+    ) {
+      setOptionsAreShown(false);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", handleToggle);
+
+    return () => {
+      document.removeEventListener("click", handleToggle);
+    };
+  }, []);
 
   const options = [
     {
-      name: "Car",
+      name: "Mini Car",
       icon: "",
       id: 0,
     },
     {
-      name: "Pickup",
+      name: "Car",
       icon: "",
       id: 1,
     },
     {
-      name: "Van",
+      name: "SUV",
       icon: "",
       id: 2,
     },
     {
-      name: "Truck",
+      name: "Pickup",
       icon: "",
       id: 3,
     },
     {
-      name: "Trailer",
+      name: "Van",
       icon: "",
       id: 4,
     },
     {
-      name: "AVT",
+      name: "Truck",
       icon: "",
       id: 5,
     },
     {
-      name: "Motorcycle",
+      name: "Trailer",
       icon: "",
       id: 6,
     },
     {
-      name: "Recreational Vehicle",
+      name: "AVT",
       icon: "",
       id: 7,
     },
     {
-      name: "Golf Cart",
+      name: "Motorcycle",
       icon: "",
       id: 8,
     },
     {
-      name: "MiniCar",
+      name: "Recreational Vehicle",
       icon: "",
       id: 9,
     },
+    {
+      name: "Golf Cart",
+      icon: "",
+      id: 10,
+    },
   ];
 
-  const showOptionsHandler = function (event) {
-    if (event.target.id === "toggle") {
-      setOptionsAreShown(!optionsAreShown);
-    } else {
-      setOptionsAreShown(false);
-    }
+  const showOptionsHandler = function () {
+    setOptionsAreShown(!optionsAreShown);
   };
 
   const chooseHandler = function (car) {
-    setChosenCar(car.name);
     setOptionsAreShown(false);
     props.onChange(car.name);
   };
 
   return (
-    <div className={style.dropdown} onClick={showOptionsHandler} ref={ref}>
+    <div className={style.dropdown} ref={ref}>
       <div className={style.select} id="toggle">
-        <button className={style.default} id="toggle" type="button">
-          {chosenCar}
+        <button
+          className={`${style.default} ${props.error ? style.error : ""}`}
+          id="toggle"
+          type="button"
+          onClick={showOptionsHandler}
+        >
+          {props.car || "Default"}
         </button>
       </div>
       <div className={style.frame}>
@@ -105,6 +130,6 @@ const SelectDrop = forwardRef((props, ref) => {
       </div>
     </div>
   );
-});
+};
 
 export default SelectDrop;

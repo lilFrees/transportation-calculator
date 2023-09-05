@@ -1,13 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.19fa466a.css",
-    "main.js": "/static/js/main.f8e4bd13.js",
+    "main.css": "/static/css/main.b074c1c7.css",
+    "main.js": "/static/js/main.745b3aed.js",
+    "static/media/fleet-of-trucks.jpg": "/static/media/fleet-of-trucks.882f714aaa7e807d219a.jpg",
+    "static/media/happy.jpeg": "/static/media/happy.e0dcea99b0c806e67caa.jpeg",
+    "static/media/truck.jpg": "/static/media/truck.cc841fc7a857578e6661.jpg",
+    "static/media/truck-heading.png": "/static/media/truck-heading.3306dd414aa2a355f721.png",
+    "static/media/white-truck.jpg": "/static/media/white-truck.ecc3787d854586a1371e.jpg",
+    "static/media/stopwatch.png": "/static/media/stopwatch.9fc01dbec733ede0aef5.png",
+    "static/media/approval.png": "/static/media/approval.efd295137dff2db1a32d.png",
+    "static/media/zakat.png": "/static/media/zakat.0128c4274694fc546e1b.png",
     "index.html": "/index.html",
-    "main.19fa466a.css.map": "/static/css/main.19fa466a.css.map",
-    "main.f8e4bd13.js.map": "/static/js/main.f8e4bd13.js.map"
+    "main.b074c1c7.css.map": "/static/css/main.b074c1c7.css.map",
+    "main.745b3aed.js.map": "/static/js/main.745b3aed.js.map"
   },
   "entrypoints": [
-    "static/css/main.19fa466a.css",
-    "static/js/main.f8e4bd13.js"
+    "static/css/main.b074c1c7.css",
+    "static/js/main.745b3aed.js"
   ]
 }

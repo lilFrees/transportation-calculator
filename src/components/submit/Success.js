@@ -1,18 +1,27 @@
-import Button from "../UI/button/Button";
+import Button from "../UI/Button/Button";
 import style from "./Success.module.css";
 import { VerificationContext } from "../verification/VerificationContext";
 import { useContext } from "react";
+import Lottie from "lottie-react";
+import animationData from "../../resource/success-animation.json";
 
 const Success = function () {
   const ctx = useContext(VerificationContext);
   const clickHandler = function () {
     ctx.onGoBack();
-    console.log(ctx.onGoBack);
+    localStorage.clear();
+    window.location.reload();
   };
+
   return (
     <div className={style.success}>
+      <div className={style.animation}>
+        <Lottie animationData={animationData} loop={false} />
+      </div>
       <h3 className={style.heading}>Form sent successfully!</h3>
-      <Button onClick={clickHandler}>Go back</Button>
+      <Button onClick={clickHandler} size={1.6}>
+        Go back
+      </Button>
     </div>
   );
 };

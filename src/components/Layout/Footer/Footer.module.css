@@ -1,0 +1,19 @@
+.footer {
+  background-color: var(--dark2);
+  color: #eee;
+  padding: 2rem 0 3rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright {
+  color: rgb(190, 190, 190);
+}
+
+.contact {
+  color: rgb(190, 190, 190);
+}
