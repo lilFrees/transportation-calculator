@@ -105,11 +105,19 @@ ol {
     var(--brand-color);
   color: #fff;
   padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .infoBox {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 2rem;
+}
+
+.infoBox span {
+  width: max-content;
 }
 
 .title {
@@ -158,4 +166,14 @@ textarea:focus {
   top: -1.2rem;
   font-size: 0.8rem;
   color: #555;
+}
+
+.error {
+  color: red;
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  margin: 0.5rem 0 0 0.5rem;
+  position: absolute;
+  top: 100%;
 }

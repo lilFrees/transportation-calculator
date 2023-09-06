@@ -4,13 +4,13 @@ import { VerificationContext } from "../verification/VerificationContext";
 import { useContext } from "react";
 import Lottie from "lottie-react";
 import animationData from "../../resource/success-animation.json";
+import { Link } from "react-router-dom";
 
 const Success = function () {
   const ctx = useContext(VerificationContext);
   const clickHandler = function () {
     ctx.onGoBack();
     localStorage.clear();
-    window.location.reload();
   };
 
   return (
@@ -19,9 +19,13 @@ const Success = function () {
         <Lottie animationData={animationData} loop={false} />
       </div>
       <h3 className={style.heading}>Form sent successfully!</h3>
-      <Button onClick={clickHandler} size={1.6}>
-        Go back
-      </Button>
+      <div>
+        <Link to={"../"}>
+          <Button onClick={clickHandler} size={1.6}>
+            Go back
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };

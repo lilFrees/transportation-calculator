@@ -3,7 +3,6 @@ import Survey from "../components/UI/Survey/Survey";
 import AlignCenter from "../components/UI/AlignCenter/AlignCenter";
 import truck from "../icons/truck.jpg";
 import happy from "../icons/happy.jpeg";
-import fleet from "../icons/fleet-of-trucks.jpg";
 import whiteTruck from "../icons/white-truck.jpg";
 import { Helmet } from "react-helmet";
 
@@ -51,7 +50,7 @@ function AboutUs() {
 
       <article className={style.section}>
         <AlignCenter className={style.content}>
-          <h1 className={style.heading}>About Us</h1>
+          <h1 className={style.heading}>About Prime Auto Transport</h1>
           <div className={style.boxes}>
             <div className={style.box}>
               <h2 className={style["sub-heading"]}>

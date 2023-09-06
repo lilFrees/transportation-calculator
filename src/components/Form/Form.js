@@ -135,10 +135,10 @@ const Form = () => {
 
       emailjs
         .sendForm(
-          "service_isz7fji",
-          "template_ei768ps",
+          "service_uuj7r3b",
+          "template_cbrlygj",
           formRef.current,
-          "MtPs8eVT0a2ozx5EU"
+          "xfCDVIdHUNpKsuuA2"
         )
         .then(
           () => {

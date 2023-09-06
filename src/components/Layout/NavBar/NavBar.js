@@ -2,6 +2,7 @@ import style from "./NavBar.module.css";
 import React, { useState } from "react";
 import Logo from "./Logo";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { BsTelephoneFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const NavBar = function () {
@@ -35,7 +36,7 @@ const NavBar = function () {
           </Link>
         </div>
         <a href="#" className={style.call}>
-          Call Us
+          <BsTelephoneFill /> Call Us
         </a>
       </div>
     </nav>
