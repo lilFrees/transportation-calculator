@@ -296,7 +296,9 @@ const Contact = function () {
             </div>
             <div className={style.infoBox}>
               <MdOutlineAlternateEmail />
-              <span className={style.infoContent}>example@gmail.com</span>
+              <span className={style.infoContent}>
+                primeautotransport.team@gmail.com
+              </span>
             </div>
           </div>
         </div>
