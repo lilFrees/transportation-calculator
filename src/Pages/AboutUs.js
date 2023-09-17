@@ -67,7 +67,7 @@ function AboutUs() {
                 competition.
               </p>
             </div>
-            <div className={style.box}>
+            <div className={style["image-box"]}>
               <img
                 src={truck}
                 className={style.image}
@@ -111,14 +111,14 @@ function AboutUs() {
                 shipping services to ensure a faster delivery time.
               </p>
             </div>
-            <div className={style.box}>
+            <div className={style["image-box"]}>
               <img src={whiteTruck} className={style.image} alt="White Truck" />
             </div>
           </div>
 
           <h2 className={style["sub-heading"]}>Why Choose Us</h2>
           <div className={style.boxes}>
-            <div className={style.box}>
+            <div className={style["image-box"]}>
               <img
                 src={happy}
                 className={style.image}

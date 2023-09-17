@@ -315,9 +315,13 @@ const Form = () => {
   };
 
   const selectBrandHandler = function (e) {
-    dispatch({ type: "SET_BRAND", payload: e });
-    setErrors({ ...errors, make: true });
-    focus3Handler();
+    dispatch({ type: "SET_BRAND", payload: e })
+      .then(() => {
+        setErrors({ ...errors, make: true });
+      })
+      .then(() => {
+        focus3Handler(false);
+      });
   };
 
   const chooseLocationHandler = function (key) {
@@ -432,7 +436,7 @@ const Form = () => {
                   e.preventDefault();
                   setTimeout(() => {
                     focus3Handler(false);
-                  }, 100);
+                  }, 200);
                 }}
                 value={state.make}
                 name="make"
