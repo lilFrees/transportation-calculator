@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
   {
     "key": 0,
@@ -80,3 +81,87 @@
     "answer": "Yes, Prime Auto Transport can facilitate oversized vehicle shipments. However, you must notify us in advance that your car is oversized and has been modified. That way, our partner carrier can allocate additional space for your vehicle on their trailer. Vehicles that are exceptionally large or heavy will increase the rate of your shipping services. This is because they limit the carrier’s ability to haul additional vehicles."
   }
 ]
+=======
+[
+  {
+    "key": 0,
+    "question": "How Much Does Domestic Car Shipping Near Me Cost?",
+    "answer": "The cost of domestic car shipping can vary based on several factors. Prime Auto Transport considers distance, weight, shipping method, season and carrier availability, and delivery method when calculating shipping costs. Distance plays a significant role, with carriers charging per mile and adjusting rates based on distance traveled. Weight is also a factor, as heavier vehicles may limit the number of cars a carrier can transport. The shipping method, whether open car transport or enclosed trailer, affects cost, with open-air being cheaper. Season and carrier availability impact prices, with higher demand and costs during the summer. Delivery method options include door-to-door (more expensive) and terminal-to-terminal (cheaper but requires retrieval from a facility)."
+  },
+  {
+    "key": 1,
+    "question": "Why Do Car Shipping Rates Vary by Season?",
+    "answer": "The primary reason that shipping rates vary by season is due to demand for car shipping companies. The majority of clients want to have their vehicles shipped during the summer months. This increased demand for carriers resources drives up the final price of your car shipping quote. Many clients are concerned about potential weather-related delays, which is likely why so many people schedule their auto shipping services in the summer."
+  },
+  {
+    "key": 2,
+    "question": "Do Gas Prices Affect Car Shipping Costs?",
+    "answer": "Yes, unfortunately, gas prices do impact car shipping costs. Fuel prices are one of the many expenses that our carriers must account for when they are providing car transport services. When fuel costs rise, so do shipping rates and so will your accurate car shipping quotes via the car shipping cost calculator on the website. However, these price fluctuations are usually minimal unless fuel costs soar unexpectedly, which is why we recommend getting multiple quotes from different companies."
+  },
+  {
+    "key": 3,
+    "question": "How Does Distance Impact Pricing?",
+    "answer": "Distance is the factor that is most directly related to the cost of your auto shipping services. As mileage increases, so do your shipping costs.  Typically, the best auto transport companies offer discounts on longer shipping requests. For example, the per-mile rate may cost $1.50 for shipments under 1,000 miles. The per-mile rate may drop to $1.25 if the shipment is over 1,000 miles. These are only generalizations and may not reflect the current prices you get from your car shipping company."
+  },
+  {
+    "key": 4,
+    "question": "Does the Weight of My Shipment Matter?",
+    "answer": "Yes, the weight of your shipment will impact rates because carriers can only haul a limited amount of cargo. The total weight of the carrier including cargo and the trailer cannot exceed 80,000 lbs GVW.  Let’s say that a truck and car hauler weigh a cumulative 35,000 lbs. This means that the carrier can accommodate 45,000 lbs of cargo. A pick-up truck that weighs 7,000 lbs will consume more of the available cargo capacity than a sedan that weighs only 3,000 lbs. As a result, the owner of the pick-up will be charged more from the car shipping company for shipping."
+  },
+  {
+    "key": 5,
+    "question": "What is the Cheapest Way to Ship My Car?",
+    "answer": "The absolute cheapest way to ship your car domestically involves an open-air trailer. To maximize cost-effective savings and get the most reasonable price, you will also need to opt for terminal-to-terminal shipping when using the car shipping cost calculator.  Upgrading to enclosed carrier transport, selecting door-to-door shipping, or scheduling the transport of a vehicle that does not run will each drive up the average cost."
+  },
+  {
+    "key": 6,
+    "question": "Why Is It More Costly to Ship Cars in an Enclosed Carrier Transport Trailer?",
+    "answer": "An enclosed car shipping trailer offers your car maximum protection from the elements and reduces the risk of damage. However, enclosed car shipping trailers weigh more and cannot haul as many cars. This means that auto shipping companies must charge more per vehicle in order to make a profit on a shipment."
+  },
+  {
+    "key": 7,
+    "question": "What is RoRo Shipping?",
+    "answer": "RoRo means roll-on/roll-off. It primarily refers to international car shipping services. This method involves driving your vehicle directly onto the cargo ship during the loading process. It is removed from the ship in the same manner when it arrives at the final destination. However, vehicles that are being shipped domestically are loaded onto ground car transporter carriers via the RoRo method, as well. The only exceptions are if a single car does not run, is a bigger vehicle size or for heavier vehicles. In this scenario, the carrier will need to load the car using additional equipment."
+  },
+  {
+    "key": 8,
+    "question": "Does Prime Auto Transport Provide Shipping Insurance Coverage?",
+    "answer": "Yes, shipping services arranged through auto shipping companies include cargo insurance coverage for every vehicle make and vehicle year. All carriers are required to carry liability insurance to accept and complete shipping assignments. However, the carrier's insurance coverage may not be enough to cover the full value of your vehicle and could require additional insurance.  We recommend obtaining supplemental coverage from your auto insurance coverage provider or a third-party vendor. This is especially important if you are shipping exotic or classic cars."
+  },
+  {
+    "key": 9,
+    "question": "How Long Will Delivery Take?",
+    "answer": "The time that it will take for your delivery to arrive fluctuates depending on a variety of factors, including: Weather, Unexpected delays, Distance, Shipping type (domestic or international) Extremely severe weather, such as a snowstorm that shuts down roadways, could delay your shipment by several days. The total distance that your shipment is traveling will also impact the time it takes to arrive. International shipping takes longer than domestic delivery, even if the total miles traveled are identical."
+  },
+  {
+    "key": 10,
+    "question": "What Information Does Prime Auto Transport Need to Provide a Quote?",
+    "answer": "To provide you with a free quote, Prime Auto Transport only needs the following information: Pick-up location, Delivery location, Year, make, and model of your vehicle. Once you have provided us with these basic details, our software will email you a free quote. If you have the exact pick-up and delivery address, this will improve the accuracy of the quote. However, the city and state or zip code will suffice if you don’t have the full information just yet."
+  },
+  {
+    "key": 11,
+    "question": "Can I Schedule Auto Transport Services Without an Exact Address?",
+    "answer": "Yes, you can schedule services through Prime Auto Transport without the exact pick-up or delivery locations. You only have to provide the city and state or zip code to schedule your delivery. However, we will need the exact addresses before finalizing your services if you have chosen to use door-to-door delivery."
+  },
+  {
+    "key": 12,
+    "question": "Am I Able to Track My Vehicle Shipment?",
+    "answer": "Yes, you can track your shipment shortly after it is loaded onto the carrier’s truck. All of our partner carriers utilize real-time GPS tracking technology so that you can get precise updates on your vehicle’s current location. You can track your shipment with a smartphone, tablet, computer, or another internet-connected device."
+  },
+  {
+    "key": 13,
+    "question": "Does Someone Have to Be Present for Loading and Delivery?",
+    "answer": "Yes, someone must be present during both loading and delivery. If you cannot be present yourself, a designee can meet with the carrier at the time of pick-up. This person must be willing to sign the bill of lading and turn over the keys to the truck driver. If no one can be present during delivery, make sure to notify our team of this in advance. We can arrange for your vehicle to be stored at a warehouse when it arrives at the final destination. Our partner carriers offer both short-term and long-term warehouse storage solutions."
+  },
+  {
+    "key": 14,
+    "question": "Can I Ship My Vehicle If It Does Not Run?",
+    "answer": "Yes, car shippers can facilitate car shipping services, even if your vehicle does not run. However, you must notify us of this fact when you’re booking your services. The carrier will need to bring additional equipment with them so that the car can be loaded onto the trailer. If you do not notify us in advance, the carrier may not be able to load your vehicle. They will have to reschedule the transport, which will result in additional fees."
+  },
+  {
+    "key": 15,
+    "question": "My Vehicle is Oversized. Can I Still Ship It?",
+    "answer": "Yes, Prime Auto Transport can facilitate oversized vehicle shipments. However, you must notify us in advance that your car is oversized and has been modified. That way, our partner carrier can allocate additional space for your vehicle on their trailer. Vehicles that are exceptionally large or heavy will increase the rate of your shipping services. This is because they limit the carrier’s ability to haul additional vehicles."
+  }
+]
+>>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf

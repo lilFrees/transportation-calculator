@@ -1,0 +1,49 @@
+.hidden {
+  display: none;
+}
+
+.side {
+  flex-basis: 40%;
+  color: var(--white);
+  padding: 2rem 2rem 2rem 0;
+}
+
+@media only screen and (max-width: 992px) {
+  .side {
+    flex-basis: 100%;
+    padding: 0;
+  }
+}
+
+.success {
+  padding: 1rem 2rem;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: auto;
+  position: relative;
+  /* background-color: var(--dark); */
+}
+
+.message {
+  color: rgb(137, 255, 101);
+  z-index: 1000;
+}
+
+.timer {
+  width: 0%;
+  height: 100%;
+  background-color: rgb(44, 43, 49);
+  /* z-index: 5; */
+  position: absolute;
+  animation: timer 3s linear;
+}
+
+@keyframes timer {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

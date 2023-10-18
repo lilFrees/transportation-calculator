@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .frame {
   max-width: 50rem;
 }
@@ -12,3 +13,19 @@
 .overflow {
   overflow: hidden;
 }
+=======
+.frame {
+  max-width: 50rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .frame {
+    max-width: 100%;
+    margin-inline: 2vw;
+  }
+}
+
+.overflow {
+  overflow: hidden;
+}
+>>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
