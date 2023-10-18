@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .container {
   display: flex;
   width: 100%;
@@ -38,44 +37,3 @@
     display: none;
   }
 }
-=======
-.container {
-  display: flex;
-  width: 100%;
-  padding: 3rem 0;
-  gap: 2rem;
-}
-
-.calculator {
-  flex-basis: 40%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  min-height: 25rem;
-  transition: 0.2s all;
-}
-
-.map {
-  color: rgb(39, 39, 39);
-  flex-basis: 60%;
-  display: block;
-  height: 25rem;
-  width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-@media only screen and (max-width: 992px) {
-  .container {
-    margin: 0 !important;
-  }
-
-  .calculator {
-    flex-basis: 100%;
-  }
-
-  .map {
-    display: none;
-  }
-}
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf

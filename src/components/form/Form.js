@@ -62,7 +62,6 @@ const reducer = (state, action) => {
       return { ...state, phoneNumber: action.payload };
     case "SET_EMAIL":
       return { ...state, email: action.payload };
-<<<<<<< HEAD
     case "SET_VEHICLE_TYPE":
       return { ...state, vehicleType: action.payload };
     case "SET_YEAR":
@@ -72,12 +71,6 @@ const reducer = (state, action) => {
     case "SET_MODEL":
       return { ...state, model: action.payload };
 
-=======
-    case "SET_ERRORS":
-      return { ...state, errors: action.payload };
-    case "SET_VEHICLE_TYPE":
-      return { ...state, vehicleType: action.payload };
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
     default:
       return state;
   }
@@ -90,7 +83,6 @@ const Form = () => {
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [step, setStep] = useState(0);
-<<<<<<< HEAD
   const [mount, setMount] = useState(false);
   const [errors, setErrors] = useState({
     email: state.email ? true : false,
@@ -102,12 +94,6 @@ const Form = () => {
     brand: state.make ? true : false,
     model: state.model ? true : false,
   });
-=======
-
-  const stepHandler = function () {
-    step === 0 ? setStep(1) : setStep(0);
-  };
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
 
   const notifySuccess = function () {
     toast.success("Form sent successfully", {
@@ -135,49 +121,13 @@ const Form = () => {
     });
   };
 
-<<<<<<< HEAD
   useEffect(() => {
     setMount(false);
   }, [step]);
-=======
-  const validateInput = (state) => {
-    const errors = {};
-
-    // Validate zip codes
-    const zipRegex = /^[0-9]{5}$/;
-    if (!zipRegex.test(state.zipcode1)) {
-      errors.zipcode1 = "Invalid Zip Code 1";
-    }
-    if (!zipRegex.test(state.zipcode2)) {
-      errors.zipcode2 = "Invalid Zip Code 2";
-    }
-
-    // Validate full name
-    const nameRegex = /^[a-zA-Z ]+$/;
-    if (!nameRegex.test(state.fullName)) {
-      errors.fullName = "Invalid Full Name";
-    }
-
-    // Validate phone number
-    const phoneRegex = /^\d{10}$/; // This is a simple regex for 10 digit number. Adjust it according to your needs.
-    if (!phoneRegex.test(state.phoneNumber)) {
-      errors.phoneNumber = "Invalid Phone Number";
-    }
-
-    // Validate email
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(state.email)) {
-      errors.email = "Invalid Email";
-    }
-
-    return errors;
-  };
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
 
   const submitHandler = function (e) {
     e.preventDefault();
 
-<<<<<<< HEAD
     setMount(true);
 
     const submitFormHandler = function () {
@@ -232,48 +182,12 @@ const Form = () => {
     }
   };
 
-  const listOfZipCodes = Database;
-  const listOfStates = CapitalsOfStates;
-
   const pickHandler1 = () => {
     setErrors({ ...errors, zipCode1: true });
   };
 
   const pickHandler2 = () => {
     setErrors({ ...errors, zipCode2: true });
-=======
-    const errors = validateInput(state);
-
-    console.log(state);
-
-    if (Object.keys(errors).length > 0) {
-      dispatch({ type: "SET_ERRORS", payload: errors });
-    } else {
-      setLoading(true);
-
-      console.log(formRef.current);
-
-      emailjs
-        .sendForm(
-          "service_isz7fji",
-          "template_ei768ps",
-          formRef.current,
-          "MtPs8eVT0a2ozx5EU"
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-            notifySuccess();
-            setLoading(false);
-            ctx.onVerification();
-          },
-          (error) => {
-            console.log(error.text);
-            notifyFail();
-          }
-        );
-    }
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
   };
 
   const listOfZipCodes = Database;
@@ -464,7 +378,6 @@ const Form = () => {
               filteredZipCodes={filteredZipCodes1}
               onHide={chooseLocationHandler}
               listId={1}
-<<<<<<< HEAD
               error={!errors.zipCode1 && mount}
               onPick={pickHandler1}
             />
@@ -484,49 +397,10 @@ const Form = () => {
               error={!errors.zipCode2 && mount}
               onPick={pickHandler2}
             />
-=======
-            />
-
-            <ZipInput
-              label="To (Zip Code):"
-              id="zip2"
-              name="to_geo"
-              value={state.zipcode2}
-              onFocus={focus2Handler}
-              onBlur={focus2Handler}
-              onChange={zipCodeChangeHandler2}
-              isFocused={state.input2Focused}
-              filteredZipCodes={filteredZipCodes2}
-              c
-              onHide={chooseLocationHandler}
-              listId={2}
-            />
-
-            <input
-              type="text"
-              id="car"
-              className={style.hidden}
-              value={chosenCar}
-              name="vehicle_type"
-              readOnly
-            />
-            <div className={style.label}>
-              Type of vehicle:
-              <SelectDrop
-                onChange={(e) => {
-                  setChosenCar(e);
-                }}
-              />
-              {state.errors && state.errors.vehicleType && (
-                <p>{state.errors.fullName}</p>
-              )}
-            </div>
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
           </>
         )}
         {step === 1 && (
           <>
-<<<<<<< HEAD
             <label className={style.label} htmlFor="year">
               Year
               <input
@@ -632,27 +506,13 @@ const Form = () => {
                 className={`${style.input} ${
                   !errors.fullName && mount && style.error
                 }`}
-=======
-            <label htmlFor="first_name" className={style.label}>
-              Full Name
-              <input
-                type="text"
-                id="first_name"
-                className={style.input}
-                required
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
                 autoComplete="off"
                 onChange={changeNameHandler}
                 value={state.fullName}
                 name="full_name"
               />
-<<<<<<< HEAD
               {!errors.fullName && mount && (
                 <p className={style.errorMsg}>Enter your full name</p>
-=======
-              {state.errors && state.errors.fullName && (
-                <p>{state.errors.fullName}</p>
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
               )}
             </label>
             <label htmlFor="phone_number" className={style.label}>
@@ -660,58 +520,39 @@ const Form = () => {
               <input
                 type="text"
                 id="phone_number"
-<<<<<<< HEAD
                 className={`${style.input} ${
                   !errors.phoneNumber && mount && style.error
                 }`}
-=======
-                className={style.input}
-                required
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
                 autoComplete="off"
                 onChange={changePhoneHandler}
                 value={state.phoneNumber}
                 name="phone_number"
               />
-<<<<<<< HEAD
               {!errors.phoneNumber && mount && (
                 <p className={style.errorMsg}>Enter your phone</p>
               )}
-=======
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
             </label>
             <label htmlFor="email" className={style.label}>
               Email
               <input
-<<<<<<< HEAD
                 type="text"
                 id="email"
                 className={`${style.input} ${
                   !errors.email && mount && style.error
                 }`}
-=======
-                type="email"
-                id="email"
-                className={style.input}
-                required
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
                 autoComplete="off"
                 onChange={changeMailHandler}
                 value={state.email}
                 name="email"
               />
-<<<<<<< HEAD
               {!errors.email && mount && (
                 <p className={style.errorMsg}>Invalid Email</p>
               )}
-=======
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
             </label>
           </>
         )}
 
         <div className={style.actions}>
-<<<<<<< HEAD
           <Button type="submit">
             {loading && "Loading..."}
             {!loading &&
@@ -726,13 +567,6 @@ const Form = () => {
               type="button"
               onClick={() => {
                 setStep(step - 1);
-=======
-          {step === 1 && (
-            <Button
-              type="button"
-              onClick={() => {
-                setStep(0);
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
               }}
               className={style.back}
               color={"#555"}
@@ -741,15 +575,6 @@ const Form = () => {
               Previous Step
             </Button>
           )}
-<<<<<<< HEAD
-=======
-
-          <Button type={step === 0 ? "submit" : "button"}>
-            {loading && "Loading..."}
-            {!loading &&
-              (step === 0 ? "Get Shipping Estimate - Free" : "Submit")}
-          </Button>
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
         </div>
         <ToastContainer
           position="top-right"

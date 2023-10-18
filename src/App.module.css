@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .app {
   width: 100%;
   background-color: var(--dark2);
@@ -22,28 +21,3 @@
   width: 100%;
   position: absolute;
 }
-=======
-.app {
-  width: 100%;
-  background-color: var(--dark2);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.app > *:not(:last-child):not(:first-child) {
-  flex-grow: 1;
-}
-
-.hidden {
-  display: none;
-}
-
-.still {
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf

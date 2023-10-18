@@ -5,12 +5,8 @@
   background-color: rgb(225, 232, 233);
   padding: 1rem;
   border-radius: 12px;
-<<<<<<< HEAD
   min-height: 100%;
   transition: 0.2s all;
-=======
-  /* border: 3px solid rgb(212, 212, 212); */
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
 }
 
 @media only screen and (max-width: 992px) {
@@ -55,13 +51,7 @@ select.input {
   border: none;
   color: rgb(61, 61, 61);
   cursor: pointer;
-<<<<<<< HEAD
   font-size: 1rem;
-=======
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  line-height: 0.1;
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
 }
 .back:hover {
   color: rgb(145, 145, 145);
@@ -69,13 +59,9 @@ select.input {
 
 .actions {
   display: flex;
-<<<<<<< HEAD
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: auto;
-=======
-  gap: 1rem;
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
 }
 
 .actions button {

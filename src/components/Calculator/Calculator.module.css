@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .calc {
   width: 100%;
   background-color: var(--dark2);
@@ -6,12 +5,3 @@
   height: 100%;
   /* overflow: hidden; */
 }
-=======
-.calc {
-  width: 100%;
-  background-color: var(--dark2);
-  border-radius: 16px;
-  height: 100%;
-  /* overflow: hidden; */
-}
->>>>>>> d136389c6c90047bdf2fb7b70ea495457b726cbf
