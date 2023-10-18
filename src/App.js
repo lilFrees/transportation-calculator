@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import Services from "./Pages/Services";
 import Footer from "./components/Layout/Footer/Footer";
 import Contact from "./Pages/Contact";
+import Success from "./components/submit/Success";
 
 function App() {
   const { isVerified } = useContext(VerificationContext);
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/success" element={<Success />} />
       </Routes>
       <Footer />
     </div>

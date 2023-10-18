@@ -1,24 +1,19 @@
 import style from "./OptionsApiList.module.css";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import CarData from "../../resource/Car_Model_List.json";
 
 const OptionsApiList = function (props) {
-  const [selectedMake, setSelectedMake] = useState("");
-  const [selectedModel, setSelectedModel] = useState("");
   const filterList = CarData.results;
 
   const inputData = props.value;
 
   const chooseMakeHandler = function (event) {
     const make = event.target.value;
-    setSelectedMake(make);
     props.onPick(make);
   };
 
   const chooseModelHandler = function (event) {
     const model = event.target.value;
-    setSelectedModel(model);
     props.onPick(model);
   };
 

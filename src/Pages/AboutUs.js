@@ -3,7 +3,6 @@ import Survey from "../components/UI/Survey/Survey";
 import AlignCenter from "../components/UI/AlignCenter/AlignCenter";
 import truck from "../icons/truck.jpg";
 import happy from "../icons/happy.jpeg";
-import fleet from "../icons/fleet-of-trucks.jpg";
 import whiteTruck from "../icons/white-truck.jpg";
 import { Helmet } from "react-helmet";
 
@@ -51,7 +50,7 @@ function AboutUs() {
 
       <article className={style.section}>
         <AlignCenter className={style.content}>
-          <h1 className={style.heading}>About Us</h1>
+          <h1 className={style.heading}>About Prime Auto Transport</h1>
           <div className={style.boxes}>
             <div className={style.box}>
               <h2 className={style["sub-heading"]}>
@@ -68,7 +67,7 @@ function AboutUs() {
                 competition.
               </p>
             </div>
-            <div className={style.box}>
+            <div className={style["image-box"]}>
               <img
                 src={truck}
                 className={style.image}
@@ -112,14 +111,14 @@ function AboutUs() {
                 shipping services to ensure a faster delivery time.
               </p>
             </div>
-            <div className={style.box}>
+            <div className={style["image-box"]}>
               <img src={whiteTruck} className={style.image} alt="White Truck" />
             </div>
           </div>
 
           <h2 className={style["sub-heading"]}>Why Choose Us</h2>
           <div className={style.boxes}>
-            <div className={style.box}>
+            <div className={style["image-box"]}>
               <img
                 src={happy}
                 className={style.image}
