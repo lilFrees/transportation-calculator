@@ -79,6 +79,8 @@ const reducer = (state, action) => {
 const Form = () => {
   const formRef = useRef();
   const ctx = useContext(VerificationContext);
+  const listOfZipCodes = Database;
+  const listOfStates = CapitalsOfStates;
 
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -189,9 +191,6 @@ const Form = () => {
   const pickHandler2 = () => {
     setErrors({ ...errors, zipCode2: true });
   };
-
-  const listOfZipCodes = Database;
-  const listOfStates = CapitalsOfStates;
 
   const zipCodeChangeHandler1 = function (event) {
     const zipCode1 = event.target.value;
