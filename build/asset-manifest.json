@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e27f6718.css",
-    "main.js": "/static/js/main.e18a1c8c.js",
+    "main.js": "/static/js/main.08245f83.js",
     "static/media/trucks.mp4": "/static/media/trucks.440e32b40befbd923e11.mp4",
     "static/media/fleet-of-trucks.jpg": "/static/media/fleet-of-trucks.882f714aaa7e807d219a.jpg",
     "static/media/happy.jpeg": "/static/media/happy.e0dcea99b0c806e67caa.jpeg",
@@ -13,10 +13,10 @@
     "static/media/zakat.png": "/static/media/zakat.0128c4274694fc546e1b.png",
     "index.html": "/index.html",
     "main.e27f6718.css.map": "/static/css/main.e27f6718.css.map",
-    "main.e18a1c8c.js.map": "/static/js/main.e18a1c8c.js.map"
+    "main.08245f83.js.map": "/static/js/main.08245f83.js.map"
   },
   "entrypoints": [
     "static/css/main.e27f6718.css",
-    "static/js/main.e18a1c8c.js"
+    "static/js/main.08245f83.js"
   ]
 }
