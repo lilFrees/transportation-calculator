@@ -5,16 +5,18 @@ import Map from "../../map/Map";
 
 function Survey() {
   return (
-    <AlignCenter>
-      <div className="container">
-        <div className="calculator">
-          <Calculator />
+    <div className="section">
+      <AlignCenter>
+        <div className="container">
+          <div className="calculator">
+            <Calculator />
+          </div>
+          <div className="map">
+            <Map />
+          </div>
         </div>
-        <div className="map">
-          <Map />
-        </div>
-      </div>
-    </AlignCenter>
+      </AlignCenter>
+    </div>
   );
 }
 
