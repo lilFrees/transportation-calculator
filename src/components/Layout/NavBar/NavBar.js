@@ -35,7 +35,7 @@ const NavBar = function () {
             Contact
           </Link>
         </div>
-        <a href="tel:+998930053069" className={style.call}>
+        <a href="tel:+13474218233" className={style.call}>
           <BsTelephoneFill /> Call Us
         </a>
       </div>
