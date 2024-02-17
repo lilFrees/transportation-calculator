@@ -34,10 +34,10 @@ const initialState = {
   input3Focused: false,
   input4Focused: false,
   fullName: "",
-  phoneNumber: undefined,
+  phoneNumber: "",
   email: "",
   vehicleType: "",
-  year: undefined,
+  year: "",
   make: "",
   model: "",
 };
@@ -313,14 +313,10 @@ const Form = () => {
     dispatch({ type: "SET_BRAND", payload: make });
   };
 
-  const selectBrandHandler = function (e) {
-    dispatch({ type: "SET_BRAND", payload: e })
-      .then(() => {
-        setErrors({ ...errors, make: true });
-      })
-      .then(() => {
-        focus3Handler(false);
-      });
+  const selectBrandHandler = async function (e) {
+    dispatch({ type: "SET_BRAND", payload: e });
+    setErrors({ ...errors, make: true });
+    focus3Handler(false);
   };
 
   const chooseLocationHandler = function (key) {
