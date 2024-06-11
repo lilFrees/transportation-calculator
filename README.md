@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Prime Auto Transport
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Visit our website](https://prime-autotransport.com/)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Prime Auto Transport is a reliable and efficient service dedicated to providing top-notch auto transport solutions. Our goal is to make vehicle shipping stress-free, whether you're moving, buying a car, or need to transport your vehicle for any reason.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Instant Quotes:** Get immediate price estimates for your auto transport needs.
+- **Order Tracking:** Track your vehicle in real-time during transport.
+- **Customer Support:** Access 24/7 customer support for any inquiries.
+- **Door-to-Door Service:** Enjoy the convenience of having your vehicle picked up and delivered to your specified locations.
+- **Secure Transport:** Ensure your vehicle is transported safely with our highly-rated carriers.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Use Cases
 
-### `npm test`
+### For Individuals
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Relocating:** Seamlessly transport your vehicle when moving to a new city or state.
+- **Vehicle Purchases:** Ship your newly purchased vehicle from the dealership or seller to your home.
+- **Seasonal Moves:** Move your car to your seasonal residence with ease.
 
-### `npm run build`
+### For Businesses
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Dealerships:** Efficiently manage bulk vehicle transports for your inventory.
+- **Car Auctions:** Transport vehicles to and from auctions securely.
+- **Corporate Relocation:** Simplify employee relocations with reliable auto transport.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Visit Our Website:** Access Prime Auto Transport at [our website](http://your-website-link.com).
+2. **Get a Quote:** Use our online tool to get an instant transport quote.
+3. **Book Your Transport:** Schedule your vehicle transport with our easy-to-use booking system.
+4. **Track Your Order:** Monitor your vehicle's progress with our real-time tracking feature.
 
-### `npm run eject`
+## Feedback and Support
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+We value your feedback! If you have any suggestions or issues, please reach out to us at [support@your-website-link.com](mailto:support@your-website-link.com).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
